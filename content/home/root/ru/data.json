@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "title": "Совершенно бесполезная ерунда, но ведь интересно!",
+    "description": [
+      "Привет! Если ты сюда забрёл, значит мои старания были не зря. Я разрабатываю на Vue и Nuxt, а ещё на PHP и Laravel, интересуюсь Golang и другими инструментами, которые цепляют.",
+      "Ещё я плотно работаю с дизайном, пользовательскими интерфейсами и нейросетями, а иногда играю в видеоигры. Давай знакомиться!"
+    ]
+  },
+  "sections": {
+    "my_projects": {
+      "title": "Мои проекты",
+      "description": [
+        "Чаще всего я делаю штуки, в которых не так уж много смысла",
+        "Но время от времени получается что-то действительно полезное"
+      ],
+      "list": [
+        {
+          "title": [
+            "Masonry",
+            "Blade"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/masonry-blade",
+            "title": "GitHub"
+          },
+          "image": "/images/black_head.svg",
+          "color_preset": "grey"
+        },
+        {
+          "title": [
+            "Vue",
+            "Masonry",
+            "Blade"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/vue-masonry-blade",
+            "title": "GitHub"
+          },
+          "image": "/images/pink_head.svg",
+          "color_preset": "green"
+        },
+        {
+          "title": [
+            "Slog",
+            "Analyze"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/slog-analyze",
+            "title": "GitHub"
+          },
+          "image": "/images/green_star.svg",
+          "color_preset": "black"
+        },
+        {
+          "title": [
+            "VVibes"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/VVibes",
+            "title": "VVibes"
+          },
+          "image": "/images/triple_rings.svg",
+          "color_preset": "grey"
+        }
+      ]
+    },
+    "visit_github": {
+      "title": "Загляни в мой GitHub",
+      "description": "Там можно найти мои контакты и актуальные проекты!",
+      "link": {
+        "title": "GitHub",
+        "to": "https://github.com/steelWinds"
+      },
+      "image": "/images/rings_and_stars.svg"
+    },
+    "contact_me": {
+      "title": "Связаться со мной",
+      "description": [
+        "Если по какой-то причине ты захочешь",
+        "со мной связаться"
+      ]
+    }
+  }
+}

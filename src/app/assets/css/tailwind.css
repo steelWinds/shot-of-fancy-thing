@@ -1,0 +1,58 @@
+@layer theme, utilities;
+
+/* *The preflight styles are imported separately because they would otherwise conflict with our styles.  */
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* *Source all ./src dir content  */
+@source "../../../**/*.{js,ts,vue}";
+
+@layer base {
+  :root {
+    font-family: SpaceGrotesk, PTSans, sans-serif;
+    font-size: 1rem;
+  }
+}
+
+@theme {
+  /* Font */
+  --font-grotesk: spacegrotesk;
+  --font-ptsans: ptsans;
+
+  /* Breakpoints */
+  --breakpoint-md: 768px;
+
+  /* Spacing */
+  --spacing-1440: 1440px;
+  --spacing-1240: 1240px;
+
+  /* Colors */
+  --color-green: oklch(92.37% 0.196 130.23deg);
+  --color-black: oklch(22.09% 0.018 279.88deg);
+  --color-grey: oklch(96.42% 0 0deg);
+  --color-white: oklch(100% 0 0deg);
+
+  /* Desktop font kit */
+  --text-h1: 60px;
+  --text-h1--line-height: 1;
+  --text-h2: 40px;
+  --text-h2--line-height: 1.1;
+  --text-h3: 30px;
+  --text-h3--line-height: 1.2;
+  --text-h4: 20px;
+  --text-h4--line-height: 1.4;
+  --text-p: 18px;
+  --text-p--line-height: 1.5;
+
+  /* Mobile font kit */
+  --text-m-h1: 43px;
+  --text-m-h1--line-height: 1.1;
+  --text-m-h2: 36px;
+  --text-m-h2--line-height: 1.1;
+  --text-m-h3: 26px;
+  --text-m-h3--line-height: 1.25;
+  --text-m-h4: 18px;
+  --text-m-h4--line-height: 1.4;
+  --text-m-p: 16px;
+  --text-m-p--line-height: 1.5;
+}

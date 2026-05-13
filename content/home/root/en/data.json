@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "title": "Totally useless nonsense, but it's interesting!",
+    "description": [
+      "Hey, if you stumbled upon this, it means my efforts weren't in vain! I also develop with Vue and Nuxt, as well as PHP and Laravel, and I'm into Golang and other tools that catch my interest.",
+      "I also work closely with design, user interfaces, and neural networks, and sometimes play video games—let’s get to know each other!"
+    ]
+  },
+  "sections": {
+    "my_projects": {
+      "title": "My projects",
+      "description": [
+        "Most of the time I do things that are pretty pointless",
+        "But every now and then I do something that’s actually useful"
+      ],
+      "list": [
+        {
+          "title": [
+            "Masonry",
+            "Blade"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/masonry-blade",
+            "title": "Github"
+          },
+          "image": "/images/black_head.svg",
+          "color_preset": "grey"
+        },
+        {
+          "title": [
+            "Vue",
+            "Masonry",
+            "Blade"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/vue-masonry-blade",
+            "title": "Github"
+          },
+          "image": "/images/pink_head.svg",
+          "color_preset": "green"
+        },
+        {
+          "title": [
+            "Slog",
+            "Analyze"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/slog-analyze",
+            "title": "Github"
+          },
+          "image": "/images/green_star.svg",
+          "color_preset": "black"
+        },
+        {
+          "title": [
+            "VVibes"
+          ],
+          "link": {
+            "to": "https://github.com/steelWinds/VVibes",
+            "title": "VVibes"
+          },
+          "image": "/images/triple_rings.svg",
+          "color_preset": "grey"
+        }
+      ]
+    },
+    "visit_github": {
+      "title": "Visit my GitHub",
+      "description": "There you can find my contact information, as well as my current projects!",
+      "link": {
+        "title": "GitHub",
+        "to": "https://github.com/steelWinds"
+      },
+      "image": "/images/rings_and_stars.svg"
+    },
+    "contact_me": {
+      "title": "Contact Me",
+      "description": [
+        "If for any reason you would like to",
+        "contact me"
+      ]
+    }
+  }
+}

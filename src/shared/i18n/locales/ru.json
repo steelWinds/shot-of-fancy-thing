@@ -1,0 +1,40 @@
+{
+  "$schemaOrg": {
+    "address": {
+      "addressCountry": "",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "streetAddress": ""
+    },
+    "email": "",
+    "name": "",
+    "telephone": ""
+  },
+  "nuxtSiteConfig": {
+    "description": "Одна забавная вещь",
+    "name": "SFT"
+  },
+  "meta": {
+    "home": {
+      "description": "Одна забавная вещь",
+      "title": "Главная"
+    }
+  },
+  "errors": {
+    "actions": {
+      "home": "На главную"
+    },
+    "default": {
+      "description": "Попробуйте вернуться на главную страницу и начать заново.",
+      "title": "Что-то пошло не так"
+    },
+    "notFound": {
+      "description": "Похоже, такого адреса больше нет или он был введён с ошибкой.",
+      "title": "Страница не найдена"
+    }
+  },
+  "shared": {
+    "copyright": "&copy; {year} SFT"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Контакты",
+  "links": [
+    {
+      "title": "Почта: kirillsurov0@gmail.com",
+      "to": "mailto:kirillsurov0@gmail.com"
+    },
+    {
+      "title": "Телефон: +7 923 252 2874",
+      "to": "tel:+79232522874"
+    },
+    {
+      "title": "Телеграм: @plutograde",
+      "to": "https://t.me/plutograde"
+    }
+  ]
+}

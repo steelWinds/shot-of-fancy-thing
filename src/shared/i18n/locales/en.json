@@ -1,0 +1,40 @@
+{
+  "$schemaOrg": {
+    "address": {
+      "addressCountry": "",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "streetAddress": ""
+    },
+    "email": "",
+    "name": "",
+    "telephone": ""
+  },
+  "nuxtSiteConfig": {
+    "description": "Shot of fancy thing",
+    "name": "SFT"
+  },
+  "meta": {
+    "home": {
+      "description": "Shot of fancy thing",
+      "title": "Home"
+    }
+  },
+  "errors": {
+    "actions": {
+      "home": "Go home"
+    },
+    "default": {
+      "description": "Try returning to the home page and starting again.",
+      "title": "Something went wrong"
+    },
+    "notFound": {
+      "description": "This page no longer exists or the address was mistyped.",
+      "title": "Page not found"
+    }
+  },
+  "shared": {
+    "copyright": "© {year} SFT"
+  }
+}

@@ -1,0 +1,1 @@
+pnpm fsd:lint && pnpm nano-staged
