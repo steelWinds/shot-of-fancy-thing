@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-onest);
+
+  /* =======================
+    Font size
+  ======================= */
+
+  /* Desktop */
+  --text-h1: 60px;
+  --text-h1--line-height: 1.2;
+  --text-h1--font-weight: 500;
+  --text-h2: 40px;
+  --text-h2--line-height: 1.2;
+  --text-h2--font-weight: 500;
+  --text-h3: 30px;
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 500;
+  --text-h4: 20px;
+  --text-h4--line-height: 1.3;
+  --text-h4--font-weight: 500;
+  --text-p: 18px;
+  --text-p--line-height: 1.2;
+  --text-p--font-weight: 400;
+
+  /* Mobile */
+  --text-m-h1: 43px;
+  --text-m-h1--line-height: 1.2;
+  --text-m-h1--font-weight: 500;
+  --text-m-h2: 36px;
+  --text-m-h2--line-height: 1.2;
+  --text-m-h2--font-weight: 500;
+  --text-m-h3: 26px;
+  --text-m-h3--line-height: 1.3;
+  --text-m-h3--font-weight: 500;
+  --text-m-h4: 18px;
+  --text-m-h4--line-height: 1.2;
+  --text-m-h4--font-weight: 500;
+  --text-m-p: 16px;
+  --text-m-p--line-height: 1.4;
+  --text-m-p--font-weight: 400;
+
+  /* =======================
+    Breakpoints
+  ======================= */
+  --breakpoint-xs: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+
+  /* =======================
+    Colors
+  ======================= */
+  --color-green: #b9ff66;
+  --color-black: #191a23;
+  --color-gray: #f3f3f3;
+  --color-white: #fff;
+
+  /* =======================
+    Transitions
+  ======================= */
+  --transition-duration-fast: 150ms;
+  --transition-duration-base: 250ms;
+  --transition-duration-slow: 400ms;
+  --transition-timing-function-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-timing-function-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+}
