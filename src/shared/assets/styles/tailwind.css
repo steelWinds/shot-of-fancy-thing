@@ -1,4 +1,8 @@
-@import 'tailwindcss';
+@layer theme, utilities;
+
+/* *The preflight styles are imported separately because they would otherwise conflict with our styles.  */
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
 
 @theme {
   --font-sans: var(--font-onest);
@@ -53,10 +57,14 @@
   /* =======================
     Colors
   ======================= */
-  --color-green: #b9ff66;
-  --color-black: #191a23;
-  --color-gray: #f3f3f3;
-  --color-white: #fff;
+  --color-white: oklch(100% 0.00011 271.152deg);
+  --color-black: oklch(0% 0 0deg);
+  --color-accent-green: oklch(92.366% 0.19581 130.249deg);
+  --color-bg-strong: oklch(22.091% 0.01764 279.877deg);
+  --color-bg-surface: oklch(96.416% 0.00011 271.152deg);
+  --color-dark-bg-strong: oklch(31.927% 0.01803 276.41deg);
+  --color-dark-bg-surface: oklch(27.046% 0.01698 275.356deg);
+  --color-dark-bg-page: oklch(17.888% 0.01042 276.381deg);
 
   /* =======================
     Transitions

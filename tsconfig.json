@@ -3,7 +3,9 @@
   "compilerOptions": {
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]

@@ -1,7 +1,6 @@
 ---
 import Layout from '~/shared/layouts/Layout.astro';
 import { useTranslations } from '~/shared/lib';
-import Badge from '~/shared/ui/Badge.astro';
 
 const t = useTranslations(Astro.currentLocale);
 ---
@@ -10,9 +9,7 @@ const t = useTranslations(Astro.currentLocale);
   title={t('seo.index.title')}
   description={t('seo.index.description')}
 >
-  <div class="w-[240px] flex flex-col gap-4 p-4">
-    <Badge class="text-h2" color="green">Label</Badge>
-    <Badge class="text-h2" color="light">Label</Badge>
-    <Badge class="text-h2" color="dark">Label</Badge>
+  <div class="text-m-p bg-green w-30 h-30 rounded-2xl grid place-items-center text-center">
+    { t('page.index.hello') }
   </div>
 </Layout>

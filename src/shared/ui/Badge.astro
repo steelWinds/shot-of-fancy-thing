@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Color = 'green' | 'light' | 'dark';
+
+interface Props extends HTMLAttributes<'span'> {
+  color?: Color
+}
+
+const { color = 'green', class: className, ...attrs } = Astro.props;
+---
+
+<span
+  class="sft-badge"
+  class:list={[
+    `sft-badge--color-${color}`,
+    className,
+  ]}
+  {...attrs}
+>
+  <slot />
+</span>
+
+<style>
+  .sft-badge {
+    color: var(--badge-text-color);
+    background-color: var(--badge-bg-color);
+    border-radius: 7px;
+    padding-inline: 7px;
+  }
+
+  .sft-badge--color-green {
+    --badge-text-color: var(--color-black);
+    --badge-bg-color: var(--color-accent-green);
+  }
+
+  .sft-badge--color-light {
+    --badge-text-color: var(--color-black);
+    --badge-bg-color: var(--color-white);
+  }
+
+  .sft-badge--color-dark {
+    --badge-text-color: var(--color-white);
+    --badge-bg-color: var(--color-bg-strong);
+  }
+</style>
