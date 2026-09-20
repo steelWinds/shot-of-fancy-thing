@@ -1,0 +1,226 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Badge from './Badge.astro';
+import Button from './Button.astro';
+import IconArrow from './Icons/IconArrow.astro';
+
+type Color = 'light' | 'green' | 'dark';
+
+interface Props extends HTMLAttributes<'a'> {
+  title: string
+  subtitle?: string
+  color?: Color
+}
+
+const { title, class: className, color = 'light', subtitle, ...props } = Astro.props;
+
+const titleByWords = title.split(' ');
+const badgeColor = getBadgeColor(color);
+const linkColor = getLinkColor(color);
+
+function getBadgeColor(color: Color) {
+  switch (color) {
+    case 'light':
+    case 'dark':
+      return 'green';
+    case 'green':
+      return 'light';
+  }
+}
+
+function getLinkColor(color: Color) {
+  switch (color) {
+    case 'light':
+    case 'green':
+      return 'dark';
+    case 'dark':
+      return 'light';
+  }
+}
+---
+
+<a
+  class="github-project-card"
+  class:list={[
+    `github-project-card__wrapper--color-${color}`,
+    className,
+  ]}
+  {...props}
+>
+  <div class="github-project-card__wrapper">
+    <div class="github-project-card__content">
+      <h4 class="github-project-card__title">
+        {
+          titleByWords.map(word => (
+            <Badge class="github-project-card__badge" color={badgeColor}>
+              {word}
+            </Badge>
+          ))
+        }
+      </h4>
+
+      {
+        subtitle && (
+          <p class="github-project-card__subtitle">
+            {subtitle}
+          </p>
+        )
+      }
+
+      <Button class="github-project-card__link">
+        <IconArrow color={linkColor} class="text-[20px] lg:text-[40px]" /> Github
+      </Button>
+    </div>
+
+    <slot name="after" />
+  </div>
+</a>
+
+<style scoped>
+.github-project-card__wrapper {
+  --github-project-card-grid: minmax(0, 1fr);
+  --github-project-card-padding: 28px;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--github-project-card-grid);
+  background-color: var(--github-project-card-bg-color);
+  border: 1px solid var(--color-bg-strong);
+  padding: var(--github-project-card-padding);
+  border-radius: var(--github-project-card-rounded);
+  transition: all var(--transition-duration-fast) var(--ease-smooth);
+  height: inherit;
+  z-index: 1;
+
+  @media (--breakpoint-lg) {
+    --github-project-card-grid: repeat(2, minmax(0, 1fr));
+    --github-project-card-padding: 34px 50px;
+  }
+}
+
+.github-project-card {
+  --github-project-card-rounded: 28px;
+
+  position: relative;
+
+  @media not (pointer: coarse) {
+    &:hover .github-project-card__wrapper {
+      transform: translateY(-4px);
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--github-project-card-backdrop-color);
+    border-radius: var(--github-project-card-rounded);
+    z-index: 0;
+  }
+
+    @media (--breakpoint-lg) {
+    --github-project-card-rounded: 45px;
+  }
+}
+
+.github-project-card__wrapper--color-light {
+  --github-project-card-bg-color: var(--color-bg-surface);
+  --github-project-card-backdrop-color: var(--color-bg-strong);
+  --github-project-card-subtitle-text-color: var(--color-bg-strong);
+  --github-project-card-link-text-color: var(--color-bg-strong);
+}
+
+.github-project-card__wrapper--color-green {
+  --github-project-card-bg-color: var(--color-accent-green);
+  --github-project-card-backdrop-color: var(--color-bg-strong);
+  --github-project-card-subtitle-text-color: var(--color-bg-strong);
+  --github-project-card-link-text-color: var(--color-bg-strong);
+}
+
+.github-project-card__wrapper--color-dark {
+  --github-project-card-bg-color: var(--color-bg-strong);
+  --github-project-card-backdrop-color: var(--color-accent-green);
+  --github-project-card-subtitle-text-color: var(--color-bg-surface);
+  --github-project-card-link-text-color: var(--color-white);
+}
+
+.github-project-card__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  min-height: 180px;
+  gap: 16px;
+
+  @media (--breakpoint-lg) {
+    min-height: 200px;
+  }
+}
+
+.github-project-card__title {
+  --github-project-card-title-font-size: var(--text-m-h3);
+  --github-project-card-title-line-height: var(--text-m-h3--line-height);
+  --github-project-card-title-font-weight: var(--text-m-h3--font-weight);
+
+  overflow-wrap: break-word;
+  width: 100%;
+  font-size: var(--github-project-card-title-font-size);
+  line-height: var(--github-project-card-title-line-height);
+  font-weight: var(--github-project-card-title-font-weight);
+  max-width: 140px;
+
+  @media (--breakpoint-lg) {
+    --github-project-card-title-font-size: var(--text-h3);
+    --github-project-card-title-line-height: var(--text-h3--line-height);
+    --github-project-card-title-font-weight: var(--text-h3--font-weight);
+  }
+}
+
+.github-project-card__subtitle {
+  --github-project-card-subtitle-font-size: var(--text-m-p);
+  --github-project-card-subtitle-line-height: var(--text-m-p--line-height);
+  --github-project-card-subtitle-font-weight: 500;
+
+  font-size: var(--github-project-card-subtitle-font-size);
+  line-height: var(--github-project-card-subtitle-line-height);
+  font-weight: var(--github-project-card-subtitle-font-weight);
+  color: var(--github-project-card-subtitle-text-color);
+
+  @media (--breakpoint-lg) {
+    --github-project-card-subtitle-font-size: var(--text-p);
+    --github-project-card-subtitle-line-height: var(--text-p--line-height);
+  }
+}
+
+.github-project-card__badge {
+  display: inline-block;
+}
+
+.github-project-card__link {
+  --github-project-card-link-font-size: var(--text-m-p);
+  --github-project-card-link-line-height: var(--text-m-p--line-height);
+  --github-project-card-link-font-weight: var(--text-m-p--font-weight);
+  --github-project-card-link-flex-direction: row-reverse;
+  --github-project-card-link-gap: 8px;
+
+  display: inline-flex;
+  flex-direction: var(--github-project-card-link-flex-direction);
+  align-items: center;
+  gap: var(--github-project-card-link-gap);
+  font-size: var(--github-project-card-link-font-size);
+  line-height: var(--github-project-card-link-line-height);
+  font-weight: var(--github-project-card-link-font-weight);
+  color: var(--github-project-card-link-text-color);
+  margin-right: auto;
+  margin-top: auto;
+
+  @media (--breakpoint-lg) {
+    --github-project-card-link-font-size: var(--text-p);
+    --github-project-card-link-line-height: var(--text-p--line-height);
+    --github-project-card-link-flex-direction: row;
+    --github-project-card-link-gap: 18px;
+  }
+}
+</style>

@@ -1,0 +1,18 @@
+@keyframes shift3d {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(var(--shift-3d-x-to), var(--shift-3d-y-to), 0);
+    animation-timing-function: step-end;
+  }
+
+  50% {
+    transform: translate3d(var(--shift-3d-x-from), var(--shift-3d-y-from), 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}

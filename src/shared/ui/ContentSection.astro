@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Badge from './Badge.astro';
+
+interface Props extends HTMLAttributes<'section'> {
+  title?: string
+  subtitle?: string
+}
+
+const { title, subtitle, class: className, ...attrs } = Astro.props;
+---
+
+<section
+  class="container-xl mx-auto"
+  class:list={[className]}
+  {...attrs}
+>
+  {
+    title && (
+      <div class="flex flex-row flex-wrap gap-5 lg:gap-10">
+        <h4>
+          <Badge class="text-m-h2 lg:text-h2">
+            { title }
+          </Badge>
+        </h4>
+        {
+          subtitle && (
+            <p class="text-m-p lg:text-p max-w-145 text-start">
+              Most of the time I do things that are pretty pointless
+              But every now and then I do something that’s actually useful
+            </p>
+          )
+        }
+      </div>
+    )
+  }
+
+  <slot />
+</section>

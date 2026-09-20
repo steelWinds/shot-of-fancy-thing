@@ -1,0 +1,36 @@
+---
+import Layout from '~/shared/layouts/Layout.astro';
+import { useTranslations } from '~/shared/lib';
+import ContentSection from '~/shared/ui/ContentSection.astro';
+import HomeContactsSection from './HomeContactsSection.astro';
+import HomeHeroSection from './HomeHeroSection.astro';
+import HomeMyGithubSection from './HomeMyGithubSection.astro';
+import HomeProjectsSection from './HomeProjectsSection.astro';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Layout
+  title={t('seo.index.title')}
+  description={t('seo.index.description')}
+>
+  <HomeHeroSection class="mt-5" />
+
+  <ContentSection
+    title="My projects"
+    subtitle="Most of the time I do things that are pretty pointless But every now and then I do something that's actually useful"
+    class="-mt-6 lg:mt-18"
+  >
+    <HomeProjectsSection class="mt-10" />
+
+    <HomeMyGithubSection class="mt-10" />
+  </ContentSection>
+
+  <ContentSection
+    title="Contact Me"
+    subtitle="Pick your favorite platform — I'm usually quick to reply."
+    class="mt-18"
+  >
+    <HomeContactsSection class="mt-10" />
+  </ContentSection>
+</Layout>

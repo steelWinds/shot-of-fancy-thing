@@ -1,0 +1,180 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Image } from 'astro:assets';
+import blackSmileImage from '~/shared/assets/images/black_smile.svg';
+import greenStarImage from '~/shared/assets/images/green_star.svg';
+import pinkSmileImage from '~/shared/assets/images/pink_smile.svg';
+import tripleCirclesImage from '~/shared/assets/images/triple_circles.svg';
+import GithubProjectCard from '~/shared/ui/GithubProjectCard.astro';
+
+
+type Props = HTMLAttributes<'section'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<ul
+  class="
+    flex
+    flex-row
+    flex-nowrap
+    overflow-auto
+    overscroll-none
+    scroll-smooth
+    scrollbar-none
+    snap-x
+    snap-mandatory
+    max-md:-mx-5
+    lg:overflow-visible
+    lg:grid
+    lg:grid-cols-2
+    lg:grid-rows-2
+    lg:gap-x-10
+    lg:gap-y-11.25
+    max-lg:pr-5
+  "
+  class:list={[className]}
+  {...props}
+>
+  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+    <GithubProjectCard
+      class="h-full"
+      title="Masonry Blade"
+      subtitle="TS & Web Workers"
+      href="https://v4.docs.astro.build/en/reference/directives-reference"
+    >
+      <div
+        class="
+              absolute
+              right-6.25
+              bottom-6
+              lg:right-12.5
+              lg:top-1/2
+              lg:-translate-y-1/2
+              h-18
+              w-32
+              lg:w-62.5
+              lg:h-31.25
+            "
+        slot="after"
+      >
+        <Image
+          src={blackSmileImage}
+          alt=""
+          class="h-full ml-auto w-auto"
+          loading="lazy"
+          decoding="async"
+          widths={[72, 125]}
+          sizes="(max-width: 1024px) 72px, 125px"
+        />
+      </div>
+    </GithubProjectCard>
+  </li>
+
+  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+    <GithubProjectCard
+      class="h-full"
+      color="green"
+      title="Vue Masonry Blade"
+      subtitle="Vue.js & TS"
+      href="https://v4.docs.astro.build/en/reference/directives-reference"
+    >
+      <div
+        class="
+              absolute
+              right-6.25
+              bottom-6
+              lg:right-12.5
+              lg:top-1/2
+              lg:-translate-y-1/2
+              h-18
+              w-32
+              lg:w-62.5
+              lg:h-31.25
+            "
+        slot="after"
+      >
+        <Image
+          src={pinkSmileImage}
+          alt=""
+          class="h-full ml-auto w-auto"
+          loading="lazy"
+          decoding="async"
+          widths={[72, 125]}
+          sizes="(max-width: 1024px) 72px, 125px"
+        />
+      </div>
+    </GithubProjectCard>
+  </li>
+
+  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+    <GithubProjectCard
+      class="h-full"
+      color="dark"
+      title="Slog Analyze"
+      subtitle="Node.js & TS"
+      href="https://v4.docs.astro.build/en/reference/directives-reference"
+    >
+      <div
+        class="
+              absolute
+              right-6.25
+              bottom-6
+              lg:right-12.5
+              lg:top-1/2
+              lg:-translate-y-1/2
+              h-18
+              w-32
+              lg:w-62.5
+              lg:h-31.25
+            "
+        slot="after"
+      >
+        <Image
+          src={greenStarImage}
+          alt=""
+          class="h-full ml-auto w-auto"
+          loading="lazy"
+          decoding="async"
+          widths={[72, 125]}
+          sizes="(max-width: 1024px) 72px, 125px"
+        />
+      </div>
+    </GithubProjectCard>
+  </li>
+
+  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+    <GithubProjectCard
+      class="h-full"
+      title="VVibes"
+      subtitle="Svelte & TS"
+      href="https://v4.docs.astro.build/en/reference/directives-reference"
+    >
+      <div
+        class="
+              absolute
+              right-6.25
+              bottom-6
+              lg:right-12.5
+              lg:top-1/2
+              lg:-translate-y-1/2
+              h-18
+              w-32
+              lg:w-62.5
+              lg:h-31.25
+            "
+        slot="after"
+      >
+        <Image
+          src={tripleCirclesImage}
+          alt=""
+          class="h-full ml-auto w-auto"
+          loading="lazy"
+          decoding="async"
+          widths={[72, 125]}
+          sizes="(max-width: 1024px) 72px, 125px"
+        />
+      </div>
+    </GithubProjectCard>
+  </li>
+</ul>

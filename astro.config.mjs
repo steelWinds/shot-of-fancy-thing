@@ -1,8 +1,11 @@
 import process from 'node:process';
 
 import sitemap from '@astrojs/sitemap';
+import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
+import icon from 'astro-icon';
+
 import { defineConfig, envField, fontProviders } from 'astro/config';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -10,23 +13,19 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineConfig({
   // site: 'https://example.com',
   output: 'static',
-
   trailingSlash: 'ignore',
-
   session: false,
-
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: 'ru',
-        locales: {
-          en: 'en',
-          ru: 'ru',
-        },
+  integrations: [sitemap({
+    i18n: {
+      defaultLocale: 'ru',
+      locales: {
+        en: 'en',
+        ru: 'ru',
       },
-    }),
-  ],
-
+    },
+  }), svelte({
+    extensions: ['.svelte'],
+  }), icon()],
   i18n: {
     defaultLocale: 'ru',
     locales: ['en', 'ru'],
@@ -34,7 +33,6 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -51,20 +49,17 @@ export default defineConfig({
       display: 'swap',
     },
   ],
-
   env: {
     schema: {
       API_URL: envField.string({ context: 'server', access: 'secret', url: true, startsWith: 'https://' }),
     },
     validateSecrets: true,
   },
-
   security: {
     csp: isProd
       ? {
         directives: [
           "default-src 'self'",
-          "style-src 'self'",
           "img-src 'self' data: blob:",
           "font-src 'self'",
           "connect-src 'self'",
@@ -76,7 +71,6 @@ export default defineConfig({
       }
       : undefined,
   },
-
   vite: {
     plugins: [
       tailwindcss(),
@@ -86,6 +80,5 @@ export default defineConfig({
       sourcemap: false,
     },
   },
-
   adapter: vercel({ staticHeaders: true }),
 });

@@ -1,0 +1,151 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon/components';
+import Button from './Button.astro';
+
+type Color = 'green' | 'light' | 'dark';
+
+interface Props extends HTMLAttributes<'a'> {
+  color?: Color
+  title: string
+  subtitle: string
+}
+
+const { color = 'green', title, subtitle, class: className, ...props } = Astro.props;
+---
+
+<a
+  class="contact-card"
+  class:list={[
+    `contact-card--color-${color}`,
+    className,
+  ]}
+  {...props}
+>
+  <p class="contact-card__title">
+    {title}
+  </p>
+
+  <p class="contact-card__subtitle">
+    {subtitle}
+  </p>
+
+  <Button class="contact-card__link" as="span">
+    Open profile <Icon class="contact-card__link-icon" name="lucide:arrow-up-right" />
+  </Button>
+</a>
+
+<style scoped>
+.contact-card__link-icon {
+  --shift-3d-x-to: 20px;
+  --shift-3d-y-to: -20px;
+  --shift-3d-x-from: -20px;
+  --shift-3d-y-from: 20px;
+
+  transition: all 10s ease;
+}
+
+.contact-card {
+  --contact-card-rounded: 24px;
+  --contact-card-gap: 10px;
+  --contact-card-min-h: 115px;
+  --contact-card-padding: 24px 28px;
+  --contact-card-link-animation-state: paused;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--contact-card-gap);
+  border-radius: var(--contact-card-rounded);
+  min-height: var(--contact-card-min-h);
+  padding: var(--contact-card-padding);
+  color: var(--contact-card-text-color);
+  background-color: var(--contact-card-bg-color);
+  border: 1px solid var(--contact-card-border-color);
+
+  @media not (pointer: coarse) {
+    &:hover .contact-card__link-icon {
+      animation: shift-3d 1s ease-out 2;
+    }
+  }
+
+  @media (--breakpoint-lg) {
+    --contact-card-rounded: 28px;
+    --contact-card-gap: 18px;
+    --contact-card-min-h: 130px;
+    --contact-card-padding: 28px 36px;
+  }
+}
+
+.contact-card--color-green {
+  --contact-card-bg-color: var(--color-accent-green);
+  --contact-card-text-color: var(--color-bg-strong);
+  --contact-card-border-color: var(--color-bg-strong);
+}
+
+.contact-card--color-light {
+  --contact-card-bg-color: var(--color-white);
+  --contact-card-text-color: var(--color-bg-strong);
+  --contact-card-border-color: var(--color-bg-strong);
+}
+
+.contact-card--color-dark {
+  --contact-card-bg-color: var(--color-bg-strong);
+  --contact-card-text-color: var(--color-white);
+  --contact-card-border-color: var(--color-bg-strong);
+}
+
+.contact-card__title {
+  --contact-card-title-font-size: var(--text-m-h3);
+  --contact-card-title-line-height: var(--text-m-h3--line-height);
+  --contact-card-title-font-weight: var(--text-m-h3--font-weight);
+
+  font-size: var(--contact-card-title-font-size);
+  line-height: var(--contact-card-title-line-height);
+  font-weight: var(--contact-card-title-font-weight);
+  color: inherit;
+
+  @media (--breakpoint-lg) {
+    --contact-card-title-font-size: var(--text-h3);
+    --contact-card-title-line-height: var(--text-h3--line-height);
+    --contact-card-title-font-wegith: var(--text-h3--font-weight);
+  }
+}
+
+.contact-card__subtitle {
+  --contact-card-subtitle-font-size: var(--text-m-p);
+  --contact-card-subtitle-line-height: var(--text-m-p--line-height);
+  --contact-card-subtitle-font-weight: var(--text-m-p--font-weight);
+
+  font-size: var(--contact-card-subtitle-font-size);
+  line-height: var(--contact-card-subtitle-line-height);
+  font-weight: var(--contact-card-subtitle-font-weight);
+  color: inherit;
+
+  @media (--breakpoint-lg) {
+    --contact-card-subtitle-font-size: var(--text-p);
+    --contact-card-subtitle-line-height: var(--text-p--line-height);
+    --contact-card-subtitle-font-wegith: var(--text-p--font-weight);
+  }
+}
+
+.contact-card__link {
+  --contact-card-link-font-size: var(--text-m-p);
+  --contact-card-link-line-height: var(--text-m-p--line-height);
+  --contact-card-link-font-weight: 500;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--contact-card-link-font-size);
+  line-height: var(--contact-card-link-line-height);
+  font-weight: var(--contact-card-link-font-weight);
+  color: inherit;
+  overflow: hidden;
+
+  @media (--breakpoint-lg) {
+    --contact-card-link-font-size: var(--text-p);
+    --contact-card-link-line-height: var(--text-p--line-height);
+  }
+}
+</style>

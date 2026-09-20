@@ -19,10 +19,16 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/svelte": "^9.0.1",
     "@astrojs/vercel": "^11.0.10",
+    "@iconify-json/lucide": "^1.2.134",
+    "@lottiefiles/dotlottie-svelte": "^0.10.15",
     "astro": "^7.3.2",
+    "astro-icon": "^1.2.0",
     "astro-og-canvas": "^0.13.1",
     "astro-seo": "^1.2.0",
+    "svelte": "^5.57.1",
+    "typescript": "^6.0.3",
     "ufo": "^1.6.4"
   },
   "allowScripts": {

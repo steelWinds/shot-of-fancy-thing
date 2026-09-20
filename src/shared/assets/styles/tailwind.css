@@ -1,10 +1,9 @@
 @layer theme, utilities;
 
-/* *The preflight styles are imported separately because they would otherwise conflict with our styles.  */
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@theme {
+@theme static {
   --font-sans: var(--font-onest);
 
   /* =======================
@@ -24,6 +23,9 @@
   --text-h4: 20px;
   --text-h4--line-height: 1.3;
   --text-h4--font-weight: 500;
+  --text-p-large: 20px;
+  --text-p-large--line-height: 1.4;
+  --text-p-large--font-weight: 400;
   --text-p: 18px;
   --text-p--line-height: 1.2;
   --text-p--font-weight: 400;
@@ -41,6 +43,9 @@
   --text-m-h4: 18px;
   --text-m-h4--line-height: 1.2;
   --text-m-h4--font-weight: 500;
+  --text-m-p-large: 16px;
+  --text-m-p-large--line-height: 1.5;
+  --text-m-p-large--font-weight: 400;
   --text-m-p: 16px;
   --text-m-p--line-height: 1.4;
   --text-m-p--font-weight: 400;
@@ -48,32 +53,57 @@
   /* =======================
     Breakpoints
   ======================= */
+
   --breakpoint-xs: 375px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
-  --breakpoint-2xl: 1920px;
+  --breakpoint-2xl: 1440px;
 
   /* =======================
     Colors
   ======================= */
+
   --color-white: oklch(100% 0.00011 271.152deg);
   --color-black: oklch(0% 0 0deg);
   --color-accent-green: oklch(92.366% 0.19581 130.249deg);
   --color-bg-strong: oklch(22.091% 0.01764 279.877deg);
   --color-bg-surface: oklch(96.416% 0.00011 271.152deg);
-  --color-dark-bg-strong: oklch(31.927% 0.01803 276.41deg);
-  --color-dark-bg-surface: oklch(27.046% 0.01698 275.356deg);
-  --color-dark-bg-page: oklch(17.888% 0.01042 276.381deg);
 
   /* =======================
     Transitions
   ======================= */
+
   --transition-duration-fast: 150ms;
   --transition-duration-base: 250ms;
   --transition-duration-slow: 400ms;
-  --transition-timing-function-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-timing-function-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* =======================
+    Keyframes
+  ======================= */
+
+  --animate-shift-3d: shift-3d 1s infinite alternate;
+
+  @keyframes shift-3d {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+      transform: translate3d(var(--shift-3d-x-to), var(--shift-3d-y-to), 0);
+      animation-timing-function: step-end;
+    }
+
+    50% {
+      transform: translate3d(var(--shift-3d-x-from), var(--shift-3d-y-from), 0);
+    }
+
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 }
 
 @layer base {
@@ -82,4 +112,19 @@
     font-size: 16px;
     scroll-behavior: smooth;
   }
+}
+
+@utility container-xl {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@utility icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  padding: 0;
 }

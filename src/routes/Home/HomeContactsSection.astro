@@ -1,0 +1,71 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import ContactCard from '~/shared/ui/ContactCard.astro';
+
+type Props = HTMLAttributes<'section'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<div
+  class="bg-bg-surface p-5 lg:py-15 max-lg:-mx-5 lg:px-25 lg:rounded-[45px]"
+  class:list={[className]}
+  {...props}
+>
+  <ul
+    class="
+    flex
+    flex-row
+    flex-nowrap
+    overflow-auto
+    overscroll-none
+    scroll-smooth
+    scrollbar-none
+    snap-x
+    snap-mandatory
+    max-md:-mx-5
+    lg:overflow-visible
+    lg:grid
+    lg:grid-cols-2
+    lg:grid-rows-2
+    lg:gap-x-10
+    lg:gap-y-7.5
+    max-lg:pr-5
+  "
+  >
+    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+      <ContactCard
+        title="Telegram"
+        subtitle="@plutograde"
+        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
+      />
+    </li>
+
+    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+      <ContactCard
+        title="Discord"
+        subtitle="@plutograde"
+        color="light"
+        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
+      />
+    </li>
+
+    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+      <ContactCard
+        title="Facebook"
+        subtitle="@plutograde"
+        color="dark"
+        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
+      />
+    </li>
+
+    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+      <ContactCard
+        title="Instagram"
+        subtitle="@plutograde"
+        color="light"
+        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
+      />
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import HomeLottieAnimation from './HomeLottieAnimation.svelte';
+
+type Props = HTMLAttributes<'section'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<section
+  class="grid grid-cols-1 lg:grid-cols-2 container-xl mx-auto relative gap-2"
+  class:list={[className]}
+  {...props}
+>
+  <div>
+    <h1 class="text-m-h1 lg:text-h1 text-black">
+      Totally useless nonsense, but it's interesting!
+    </h1>
+
+    <p class="text-m-p-large lg:text-p-large mt-6 lg:mt-8 text-black">
+      Hey, if you stumbled upon this, it means my efforts weren't in vain! I also develop with Vue and Nuxt,
+      as well as PHP and Laravel,
+      and I'm into Golang and other tools that catch my interest.
+      <br />
+      <br />
+      I also work closely with design, user interfaces,
+      and neural networks, and sometimes play video games—let’s get to know each other!
+    </p>
+  </div>
+
+  <div
+    class="
+      aspect-square
+      w-full
+      max-w-[420px]
+      mx-auto
+      lg:max-w-none
+      lg:absolute
+      lg:w-1/2
+      lg:right-0
+      lg:-top-15
+    "
+  >
+    <HomeLottieAnimation client:only="svelte" />
+  </div>
+</section>

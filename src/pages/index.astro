@@ -1,18 +1,5 @@
 ---
-import Layout from '~/shared/layouts/Layout.astro';
-import { useTranslations } from '~/shared/lib';
-import Badge from '~/shared/ui/Badge.astro';
-
-const t = useTranslations(Astro.currentLocale);
+import HomePage from '~/routes/Home/HomePage.astro';
 ---
 
-<Layout
-  title={t('seo.index.title')}
-  description={t('seo.index.description')}
->
-  <div class="w-[240px] flex flex-col gap-4 p-4">
-    <Badge class="text-h2" color="green">Label</Badge>
-    <Badge class="text-h2" color="light">Label</Badge>
-    <Badge class="text-h2" color="dark">Label</Badge>
-  </div>
-</Layout>
+<HomePage />
