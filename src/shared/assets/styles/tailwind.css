@@ -110,7 +110,10 @@
   :root {
     font-family: var(--font-sans), sans-serif;
     font-size: 16px;
-    scroll-behavior: smooth;
+
+    @media not (prefers-reduced-motion: reduce) {
+      scroll-behavior: smooth;
+    }
   }
 }
 

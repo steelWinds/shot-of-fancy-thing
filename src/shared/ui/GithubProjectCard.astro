@@ -1,7 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import Badge from './Badge.astro';
-import Button from './Button.astro';
 import IconArrow from './Icons/IconArrow.astro';
 
 type Color = 'light' | 'green' | 'dark';
@@ -67,9 +66,9 @@ function getLinkColor(color: Color) {
         )
       }
 
-      <Button class="github-project-card__link">
+      <span class="github-project-card__link">
         <IconArrow color={linkColor} class="text-[20px] lg:text-[40px]" /> Github
-      </Button>
+      </span>
     </div>
 
     <slot name="after" />
@@ -103,7 +102,7 @@ function getLinkColor(color: Color) {
 
   position: relative;
 
-  @media not (pointer: coarse) {
+  @media (not (pointer: coarse)) and (not (prefers-reduced-motion: reduce)) {
     &:hover .github-project-card__wrapper {
       transform: translateY(-4px);
     }

@@ -1,7 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { Icon } from 'astro-icon/components';
-import Button from './Button.astro';
 
 type Color = 'green' | 'light' | 'dark';
 
@@ -30,9 +29,9 @@ const { color = 'green', title, subtitle, class: className, ...props } = Astro.p
     {subtitle}
   </p>
 
-  <Button class="contact-card__link" as="span">
+  <span class="contact-card__link">
     Open profile <Icon class="contact-card__link-icon" name="lucide:arrow-up-right" />
-  </Button>
+  </span>
 </a>
 
 <style scoped>
@@ -62,7 +61,7 @@ const { color = 'green', title, subtitle, class: className, ...props } = Astro.p
   background-color: var(--contact-card-bg-color);
   border: 1px solid var(--contact-card-border-color);
 
-  @media not (pointer: coarse) {
+  @media (not (pointer: coarse)) and (not (prefers-reduced-motion: reduce)) {
     &:hover .contact-card__link-icon {
       animation: shift-3d 1s ease-out 2;
     }

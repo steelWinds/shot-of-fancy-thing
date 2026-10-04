@@ -1,15 +1,15 @@
 ---
+import HomePage from '~/routes/Home/HomePage.astro';
 import Layout from '~/shared/layouts/Layout.astro';
 import { useTranslations } from '~/shared/lib';
 
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations('ru');
 ---
 
 <Layout
   title={t('seo.index.title')}
   description={t('seo.index.description')}
+  ogImage="/og/en/home.png"
 >
-  <div class="text-m-p bg-green w-30 h-30 rounded-2xl grid place-items-center text-center">
-    { t('page.index.hello') }
-  </div>
+  <HomePage />
 </Layout>

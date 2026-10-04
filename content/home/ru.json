@@ -1,0 +1,172 @@
+{
+  "hero": {
+    "title": [
+      {
+        "text": "Делаю штуки "
+      },
+      {
+        "text": "для веба",
+        "highlighter": {
+          "action": "underline",
+          "delay": 300,
+          "duration": 800,
+          "strokeWidth": 3,
+          "padding": 2
+        }
+      },
+      {
+        "text": " - а иногда просто потому, что "
+      },
+      {
+        "text": "интересно",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 850,
+          "duration": 700,
+          "strokeWidth": 2,
+          "padding": 3
+        }
+      },
+      {
+        "text": "."
+      }
+    ],
+    "description": [
+      "Я fullstack-разработчик, в основном работаю с Vue, Nuxt, PHP и Laravel. Мне нравится собирать вещи целиком: от интерфейса и клиентской логики до backend-части и интеграций.",
+      "Кроме самой разработки, много внимания уделяю дизайну, анимациям, производительности и тому, как продукт ощущается в использовании. Иногда экспериментирую с новыми технологиями, нейросетями и просто интересными идеями."
+    ]
+  },
+  "projects": {
+    "title": "Мои проекты",
+    "subtitle": [
+      {
+        "text": "Чаще всего всё начинается с "
+      },
+      {
+        "text": "любопытной идеи",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 300,
+          "duration": 700,
+          "strokeWidth": 2,
+          "padding": 1
+        }
+      },
+      {
+        "text": ". А иногда из неё получается что-то "
+      },
+      {
+        "text": "действительно полезное",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 750,
+          "duration": 650,
+          "strokeWidth": 2,
+          "padding": 2
+        }
+      },
+      {
+        "text": "."
+      }
+    ],
+    "items": [
+      {
+        "title": "Masonry Blade",
+        "subtitle": "TS & Web Workers",
+        "lottie": "black-smile-animation",
+        "lottieClass": "aspect-square",
+        "color": "light",
+        "link": "https://github.com/steelWinds/masonry-blade"
+      },
+      {
+        "title": "Vue Masonry Blade",
+        "subtitle": "Vue.js & TS",
+        "lottie": "pink-smile-animation",
+        "lottieClass": "aspect-square",
+        "color": "green",
+        "link": "https://vue-masonry-blade.vercel.app/"
+      },
+      {
+        "title": "Slog Analyze",
+        "subtitle": "Node.js & TS",
+        "lottie": "green-star-animation",
+        "lottieClass": "aspect-square",
+        "color": "dark",
+        "link": "https://github.com/steelWinds/slog-analyze"
+      },
+      {
+        "title": "VVibes",
+        "subtitle": "Svelte & TS",
+        "lottie": "triple-circles-animation",
+        "lottieClass": "aspect-video",
+        "color": "light",
+        "link": "https://v-vibes.vercel.app"
+      }
+    ]
+  },
+  "githubCard": {
+    "title": "Больше на GitHub",
+    "subtitle": "Там лежат остальные эксперименты, небольшие проекты и просто код, который мне хотелось написать.",
+    "link": "https://github.com/steelWinds"
+  },
+  "contacts": {
+    "title": "Будем на связи",
+    "subtitle": [
+      {
+        "text": "Выбирай "
+      },
+      {
+        "text": "удобную площадку",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 300,
+          "duration": 700,
+          "strokeWidth": 2,
+          "padding": 1
+        }
+      },
+      {
+        "text": " - обычно я отвечаю "
+      },
+      {
+        "text": "довольно быстро",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 750,
+          "duration": 650,
+          "strokeWidth": 2,
+          "padding": 2
+        }
+      },
+      {
+        "text": "."
+      }
+    ],
+    "items": [
+      {
+        "title": "Telegram",
+        "subtitle": "@plutograde",
+        "link": "https://t.me/plutograde",
+        "color": "green"
+      },
+      {
+        "title": "Discord",
+        "subtitle": "steelwind_demon",
+        "link": "https://discord.com/users/407856290107359243",
+        "color": "light"
+      },
+      {
+        "title": "Facebook",
+        "subtitle": "Личный профиль",
+        "link": "https://www.facebook.com/profile.php?id=61593731563202",
+        "color": "dark"
+      },
+      {
+        "title": "Instagram",
+        "subtitle": "@gleipnir_0",
+        "link": "https://www.instagram.com/gleipnir_0/",
+        "color": "light"
+      }
+    ]
+  }
+}

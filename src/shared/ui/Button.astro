@@ -9,7 +9,7 @@ type Props<T extends Tag> = Polymorphic<{
   color?: Color
 }>;
 
-const { color, as: Element = 'button', class: className, ...props } = Astro.props;
+const { color = 'dark', as: Element = 'button', class: className, ...props } = Astro.props;
 ---
 
 <Element

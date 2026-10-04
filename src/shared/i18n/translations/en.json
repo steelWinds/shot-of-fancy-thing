@@ -1,7 +1,19 @@
 {
   "key": "en",
-  "seo.index.title": "Main page",
-  "seo.index.description": "Totally useless nonsense, but it's interesting!",
 
-  "page.index.hello": "hello!"
+  "seo.index.title": "Kirill - fullstack developer and engineer of useless things",
+  "seo.index.description": "Fullstack development, interfaces, experiments, and various things I make.",
+  "seo.404.title": "Page not found",
+  "seo.404.description": "This page doesn't exist, but the homepage is only one click away.",
+  "seo.500.title": "Looks like this page broke",
+  "seo.500.description": "Sorry about that — I may have broken something. Try reloading the page.",
+
+  "page.404.label": "404 error",
+  "page.404.title": "Looks like this page isn't here",
+  "page.404.description": "The link may be outdated, or there might be a typo in the address. Let's head back home.",
+  "page.404.backHome": "Back to home",
+
+  "page.500.label": "Error 500",
+  "page.500.title": "Looks like this page broke",
+  "page.500.description": "Sorry about that — I may have broken something. Try reloading the page."
 }

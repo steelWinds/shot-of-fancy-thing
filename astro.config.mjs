@@ -11,7 +11,7 @@ import { defineConfig, envField, fontProviders } from 'astro/config';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  // site: 'https://example.com',
+  site: 'https://steelcore.space',
   output: 'static',
   trailingSlash: 'ignore',
   session: false,
@@ -62,11 +62,9 @@ export default defineConfig({
           "default-src 'self'",
           "img-src 'self' data: blob:",
           "font-src 'self'",
-          "connect-src 'self'",
           "media-src 'self'",
           "object-src 'none'",
           "base-uri 'self'",
-          "form-action 'self'",
         ],
       }
       : undefined,
@@ -78,6 +76,15 @@ export default defineConfig({
 
     build: {
       sourcemap: false,
+      rolldownOptions: {
+        output: {
+          minify: {
+            compress: {
+              dropConsole: true,
+            },
+          },
+        },
+      },
     },
   },
   adapter: vercel({ staticHeaders: true }),

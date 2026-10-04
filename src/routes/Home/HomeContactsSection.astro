@@ -1,10 +1,15 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import type { CollectionEntry } from 'astro:content';
 import ContactCard from '~/shared/ui/ContactCard.astro';
 
-type Props = HTMLAttributes<'section'>;
+type Contact = CollectionEntry<'home'>['data']['contacts']['items'][number];
 
-const { class: className, ...props } = Astro.props;
+interface Props extends HTMLAttributes<'section'> {
+  items: Contact[]
+}
+
+const { items = [], class: className, ...props } = Astro.props;
 ---
 
 <div
@@ -18,12 +23,12 @@ const { class: className, ...props } = Astro.props;
     flex-row
     flex-nowrap
     overflow-auto
-    overscroll-none
+    overscroll-x-none
     scroll-smooth
     scrollbar-none
     snap-x
     snap-mandatory
-    max-md:-mx-5
+    max-lg:-mx-5
     lg:overflow-visible
     lg:grid
     lg:grid-cols-2
@@ -33,39 +38,19 @@ const { class: className, ...props } = Astro.props;
     max-lg:pr-5
   "
   >
-    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-      <ContactCard
-        title="Telegram"
-        subtitle="@plutograde"
-        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
-      />
-    </li>
-
-    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-      <ContactCard
-        title="Discord"
-        subtitle="@plutograde"
-        color="light"
-        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
-      />
-    </li>
-
-    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-      <ContactCard
-        title="Facebook"
-        subtitle="@plutograde"
-        color="dark"
-        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
-      />
-    </li>
-
-    <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-      <ContactCard
-        title="Instagram"
-        subtitle="@plutograde"
-        color="light"
-        href="https://docs.astro.build/en/reference/modules/astro-assets/#image-"
-      />
-    </li>
+    {
+      items.map(contact => (
+        <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+          <ContactCard
+            title={contact.title}
+            subtitle={contact.subtitle}
+            href={contact.link}
+            color={contact.color}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </li>
+      ))
+    }
   </ul>
 </div>

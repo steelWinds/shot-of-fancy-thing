@@ -1,16 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { Image } from 'astro:assets';
-import blackSmileImage from '~/shared/assets/images/black_smile.svg';
-import greenStarImage from '~/shared/assets/images/green_star.svg';
-import pinkSmileImage from '~/shared/assets/images/pink_smile.svg';
-import tripleCirclesImage from '~/shared/assets/images/triple_circles.svg';
+import type { CollectionEntry } from 'astro:content';
 import GithubProjectCard from '~/shared/ui/GithubProjectCard.astro';
+import LottieAnimation from '~/shared/ui/LottieAnimation.svelte';
 
+type Project = CollectionEntry<'home'>['data']['projects']['items'][number];
 
-type Props = HTMLAttributes<'section'>;
+interface Props extends HTMLAttributes<'section'> {
+  items: Project[]
+}
 
-const { class: className, ...props } = Astro.props;
+const { items = [], class: className, ...props } = Astro.props;
 ---
 
 <ul
@@ -19,12 +19,11 @@ const { class: className, ...props } = Astro.props;
     flex-row
     flex-nowrap
     overflow-auto
-    overscroll-none
+    overscroll-x-none
     scroll-smooth
     scrollbar-none
-    snap-x
     snap-mandatory
-    max-md:-mx-5
+    snap-x
     lg:overflow-visible
     lg:grid
     lg:grid-cols-2
@@ -36,145 +35,44 @@ const { class: className, ...props } = Astro.props;
   class:list={[className]}
   {...props}
 >
-  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-    <GithubProjectCard
-      class="h-full"
-      title="Masonry Blade"
-      subtitle="TS & Web Workers"
-      href="https://v4.docs.astro.build/en/reference/directives-reference"
-    >
-      <div
-        class="
+  {
+    items.map(project => (
+      <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+        <GithubProjectCard
+          class="h-full"
+          title={project.title}
+          subtitle={project.subtitle}
+          href={project.link}
+          color={project.color}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div
+            class="
               absolute
-              right-6.25
+              right-6
               bottom-6
-              lg:right-12.5
-              lg:top-1/2
-              lg:-translate-y-1/2
-              h-18
-              w-32
-              lg:w-62.5
-              lg:h-31.25
+              lg:bottom-12
+              h-16
+              lg:h-28
+              max-w-56
             "
-        slot="after"
-      >
-        <Image
-          src={blackSmileImage}
-          alt=""
-          class="h-full ml-auto w-auto"
-          loading="lazy"
-          decoding="async"
-          widths={[72, 125]}
-          sizes="(max-width: 1024px) 72px, 125px"
-        />
-      </div>
-    </GithubProjectCard>
-  </li>
-
-  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-    <GithubProjectCard
-      class="h-full"
-      color="green"
-      title="Vue Masonry Blade"
-      subtitle="Vue.js & TS"
-      href="https://v4.docs.astro.build/en/reference/directives-reference"
-    >
-      <div
-        class="
-              absolute
-              right-6.25
-              bottom-6
-              lg:right-12.5
-              lg:top-1/2
-              lg:-translate-y-1/2
-              h-18
-              w-32
-              lg:w-62.5
-              lg:h-31.25
-            "
-        slot="after"
-      >
-        <Image
-          src={pinkSmileImage}
-          alt=""
-          class="h-full ml-auto w-auto"
-          loading="lazy"
-          decoding="async"
-          widths={[72, 125]}
-          sizes="(max-width: 1024px) 72px, 125px"
-        />
-      </div>
-    </GithubProjectCard>
-  </li>
-
-  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-    <GithubProjectCard
-      class="h-full"
-      color="dark"
-      title="Slog Analyze"
-      subtitle="Node.js & TS"
-      href="https://v4.docs.astro.build/en/reference/directives-reference"
-    >
-      <div
-        class="
-              absolute
-              right-6.25
-              bottom-6
-              lg:right-12.5
-              lg:top-1/2
-              lg:-translate-y-1/2
-              h-18
-              w-32
-              lg:w-62.5
-              lg:h-31.25
-            "
-        slot="after"
-      >
-        <Image
-          src={greenStarImage}
-          alt=""
-          class="h-full ml-auto w-auto"
-          loading="lazy"
-          decoding="async"
-          widths={[72, 125]}
-          sizes="(max-width: 1024px) 72px, 125px"
-        />
-      </div>
-    </GithubProjectCard>
-  </li>
-
-  <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
-    <GithubProjectCard
-      class="h-full"
-      title="VVibes"
-      subtitle="Svelte & TS"
-      href="https://v4.docs.astro.build/en/reference/directives-reference"
-    >
-      <div
-        class="
-              absolute
-              right-6.25
-              bottom-6
-              lg:right-12.5
-              lg:top-1/2
-              lg:-translate-y-1/2
-              h-18
-              w-32
-              lg:w-62.5
-              lg:h-31.25
-            "
-        slot="after"
-      >
-        <Image
-          src={tripleCirclesImage}
-          alt=""
-          class="h-full ml-auto w-auto"
-          loading="lazy"
-          decoding="async"
-          widths={[72, 125]}
-          sizes="(max-width: 1024px) 72px, 125px"
-        />
-      </div>
-    </GithubProjectCard>
-  </li>
+            class:list={[project.lottieClass]}
+            slot="after"
+            aria-hidden="true"
+          >
+            <div class="ml-auto w-full h-full">
+              <LottieAnimation
+                name={project.lottie}
+                duration={1}
+                loop
+                autoplay
+                client:only="svelte"
+              />
+            </div>
+          </div>
+        </GithubProjectCard>
+      </li>
+    ))
+  }
 </ul>

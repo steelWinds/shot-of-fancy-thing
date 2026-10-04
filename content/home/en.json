@@ -1,0 +1,172 @@
+{
+  "hero": {
+    "title": [
+      {
+        "text": "I build things "
+      },
+      {
+        "text": "for the web",
+        "highlighter": {
+          "action": "underline",
+          "delay": 300,
+          "duration": 800,
+          "strokeWidth": 3,
+          "padding": 2
+        }
+      },
+      {
+        "text": " - and sometimes "
+      },
+      {
+        "text": "just for fun",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 850,
+          "duration": 700,
+          "strokeWidth": 2,
+          "padding": 3
+        }
+      },
+      {
+        "text": "."
+      }
+    ],
+    "description": [
+      "I'm a fullstack developer, mostly working with Vue, Nuxt, PHP, and Laravel. I like building things end to end - from interfaces and client-side logic to backend functionality and integrations.",
+      "Beyond development itself, I care a lot about design, animations, performance, and how a product feels to use. I also like experimenting with new technologies, AI, and whatever ideas happen to catch my interest."
+    ]
+  },
+  "projects": {
+    "title": "Things I've built",
+    "subtitle": [
+      {
+        "text": "Most of what I build starts as a "
+      },
+      {
+        "text": "curious idea",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 300,
+          "duration": 700,
+          "strokeWidth": 2,
+          "padding": 1
+        }
+      },
+      {
+        "text": ". Every now and then, it turns into something "
+      },
+      {
+        "text": "genuinely useful",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 750,
+          "duration": 650,
+          "strokeWidth": 2,
+          "padding": 2
+        }
+      },
+      {
+        "text": "."
+      }
+    ],
+    "items": [
+      {
+        "title": "Masonry Blade",
+        "subtitle": "TS & Web Workers",
+        "lottie": "black-smile-animation",
+        "lottieClass": "aspect-square",
+        "color": "light",
+        "link": "https://github.com/steelWinds/masonry-blade"
+      },
+      {
+        "title": "Vue Masonry Blade",
+        "subtitle": "Vue.js & TS",
+        "lottie": "pink-smile-animation",
+        "lottieClass": "aspect-square",
+        "color": "green",
+        "link": "https://vue-masonry-blade.vercel.app/"
+      },
+      {
+        "title": "Slog Analyze",
+        "subtitle": "Node.js & TS",
+        "lottie": "green-star-animation",
+        "lottieClass": "aspect-square",
+        "color": "dark",
+        "link": "https://github.com/steelWinds/slog-analyze"
+      },
+      {
+        "title": "VVibes",
+        "subtitle": "Svelte & TS",
+        "lottie": "triple-circles-animation",
+        "lottieClass": "aspect-video",
+        "color": "light",
+        "link": "https://v-vibes.vercel.app"
+      }
+    ]
+  },
+  "githubCard": {
+    "title": "More on GitHub",
+    "subtitle": "More experiments, side projects, and code live over on my GitHub.",
+    "link": "https://github.com/steelWinds"
+  },
+  "contacts": {
+    "title": "Let's talk",
+    "subtitle": [
+      {
+        "text": "Pick whichever platform "
+      },
+      {
+        "text": "works for you",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 300,
+          "duration": 700,
+          "strokeWidth": 2,
+          "padding": 1
+        }
+      },
+      {
+        "text": " - I usually reply "
+      },
+      {
+        "text": "pretty quickly",
+        "highlighter": {
+          "action": "highlight",
+          "delay": 750,
+          "duration": 650,
+          "strokeWidth": 2,
+          "padding": 2
+        }
+      },
+      {
+        "text": "."
+      }
+    ],
+    "items": [
+      {
+        "title": "Telegram",
+        "subtitle": "@plutograde",
+        "link": "https://t.me/plutograde",
+        "color": "green"
+      },
+      {
+        "title": "Discord",
+        "subtitle": "steelwind_demon",
+        "link": "https://discord.com/users/407856290107359243",
+        "color": "light"
+      },
+      {
+        "title": "Facebook",
+        "subtitle": "Personal profile",
+        "link": "https://www.facebook.com/profile.php?id=61593731563202",
+        "color": "dark"
+      },
+      {
+        "title": "Instagram",
+        "subtitle": "@gleipnir_0",
+        "link": "https://www.instagram.com/gleipnir_0/",
+        "color": "light"
+      }
+    ]
+  }
+}

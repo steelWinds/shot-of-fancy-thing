@@ -1,7 +1,8 @@
 ---
 import { SEO } from 'astro-seo';
 import { Font } from 'astro:assets';
-import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { getAbsoluteLocaleUrl, pathHasLocale } from 'astro:i18n';
+import { withBase } from 'ufo';
 import '~/shared/assets/styles/preflight.css';
 import '~/shared/assets/styles/tailwind.css';
 import '~/shared/assets/styles/animations.css';
@@ -14,10 +15,10 @@ interface LanguageAlternate {
 export interface Props {
   title: string
   description: string
-  image?: string
+  ogImage: string
   type?: 'website' | 'article' | 'profile'
-  ogLocaleAlternate?: string[]
   languageAlternates?: LanguageAlternate[]
+  locale?: string
   noindex?: boolean
   nofollow?: boolean
   schema?: Record<string, unknown>
@@ -26,29 +27,39 @@ export interface Props {
 const {
   title,
   description,
-  image,
+  ogImage,
   type = 'website',
-  ogLocaleAlternate,
   noindex = false,
   nofollow = false,
+  locale = Astro.currentLocale,
   schema,
 } = Astro.props;
 
+const ogImageURL = withBase(ogImage, Astro.site?.href ?? '');
+
+const path = pathHasLocale(Astro.url.pathname)
+  ? Astro.url.pathname.split('/').slice(2).join('/')
+  : Astro.url.pathname.slice(1);
+
 const languageAlternates = [
   {
-    href: getAbsoluteLocaleUrl('en', Astro.url.pathname),
+    href: getAbsoluteLocaleUrl('en', path),
     hrefLang: 'en',
   },
   {
-    href: getAbsoluteLocaleUrl('ru', Astro.url.pathname),
+    href: getAbsoluteLocaleUrl('ru', path),
     hrefLang: 'ru',
   },
-].filter(({ hrefLang }) => hrefLang !== Astro.currentLocale);
+  {
+    href: getAbsoluteLocaleUrl('ru', path),
+    hrefLang: 'x-default',
+  },
+];
 ---
 
 <!doctype html>
 
-<html lang={Astro.currentLocale}>
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,30 +81,27 @@ const languageAlternates = [
       nofollow={nofollow}
       robotsExtras="max-image-preview:large"
       languageAlternates={languageAlternates}
-      openGraph={image
-        ? {
-          basic: {
-            title,
-            type,
-            image,
-            url: Astro.url,
-          },
+      openGraph={{
+        basic: {
+          title,
+          type,
+          image: ogImageURL,
+          url: Astro.url,
+        },
 
-          optional: {
-            description,
-            locale: Astro.currentLocale,
-            localeAlternate: ogLocaleAlternate,
-            siteName: 'ShotOfFancyThing',
-          },
+        optional: {
+          description,
+          locale,
+          siteName: 'ShotOfFancyThing',
+        },
 
-          image: {
-            width: 1200,
-            height: 630,
-            type: 'image/png',
-            alt: title,
-          },
-        }
-        : undefined}
+        image: {
+          width: 1200,
+          height: 630,
+          type: 'image/png',
+          alt: title,
+        },
+      }}
       twitter={{
         card: 'summary_large_image',
       }}
