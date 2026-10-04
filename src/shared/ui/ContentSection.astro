@@ -20,11 +20,11 @@ const { title, subtitle, class: className, ...attrs } = Astro.props;
   {...attrs}
 >
   <div class="flex flex-row flex-wrap gap-5 lg:gap-10">
-    <h4>
+    <h2>
       <Badge class="text-m-h2 lg:text-h2">
         { title }
       </Badge>
-    </h4>
+    </h2>
     {
       subtitle && (
         <p class="text-m-p lg:text-p max-w-140 text-start">

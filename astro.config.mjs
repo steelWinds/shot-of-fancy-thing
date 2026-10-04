@@ -56,16 +56,33 @@ export default defineConfig({
     validateSecrets: true,
   },
   security: {
+    allowedDomains: [
+      {
+        hostname: 'steelcore.space',
+        protocol: 'https',
+      },
+    ],
     csp: isProd
       ? {
         directives: [
           "default-src 'self'",
+          "connect-src 'self' data:",
           "img-src 'self' data: blob:",
           "font-src 'self'",
           "media-src 'self'",
           "object-src 'none'",
           "base-uri 'self'",
         ],
+        scriptDirective: {
+          resources: ["'self'", "'wasm-unsafe-eval'"],
+        },
+        styleDirective: {
+          resources: [
+            { resource: "'self'", kind: 'element' },
+            { resource: "'unsafe-inline'", kind: 'element' },
+            { resource: "'unsafe-inline'", kind: 'attribute' },
+          ],
+        },
       }
       : undefined,
   },

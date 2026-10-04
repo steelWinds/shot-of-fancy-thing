@@ -12,8 +12,8 @@
     "astro": "astro",
     "lint:eslint-check": "eslint",
     "lint:eslint": "eslint --fix",
-    "lint:stylelint": "stylelint \"src/**/*.{css,astro}\"",
-    "lint:stylelint:fix": "stylelint \"src/**/*.{css,astro}\" --fix",
+    "lint:stylelint": "stylelint \"src/**/*.{css,astro,svelte}\"",
+    "lint:stylelint:fix": "stylelint \"src/**/*.{css,astro,svelte}\" --fix",
     "lint:fix": "npm run lint:eslint && npm run lint:stylelint:fix",
     "prepare": "husky"
   },
@@ -53,7 +53,7 @@
     "husky": "^9.1.7",
     "nano-staged": "^1.0.2",
     "postcss": "8.5.28",
-    "postcss-html": "2.0.0",
+    "postcss-html": "^2.0.0",
     "postcss-preset-env": "11.5.2",
     "postcss-pxtorem": "6.1.0",
     "prettier": "^3.9.6",
@@ -65,6 +65,6 @@
   },
   "nano-staged": {
     "*": "eslint --fix",
-    "*.{css,astro}": "stylelint --fix"
+    "*.{css,astro,svelte}": "stylelint --fix"
   }
 }

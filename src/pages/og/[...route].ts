@@ -21,14 +21,6 @@ const pages = {
     title: tEn('seo.404.title'),
     description: tEn('seo.404.description'),
   },
-  'ru/500': {
-    title: tRu('seo.500.title'),
-    description: tRu('seo.500.description'),
-  },
-  'en/500': {
-    title: tEn('seo.500.title'),
-    description: tEn('seo.500.description'),
-  },
 };
 
 // eslint-disable-next-line antfu/no-top-level-await

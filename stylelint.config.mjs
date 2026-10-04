@@ -23,4 +23,11 @@ export default {
       },
     ],
   },
+
+  overrides: [
+    {
+      files: ['**/*.svelte'],
+      customSyntax: 'postcss-html',
+    },
+  ],
 };

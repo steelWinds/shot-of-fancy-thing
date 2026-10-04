@@ -1,7 +1,9 @@
 <script lang="ts">
 import type { Config } from '@lottiefiles/dotlottie-svelte';
-import { DotLottieSvelte } from '@lottiefiles/dotlottie-svelte';
-  import { onMount } from 'svelte';
+import { DotLottieSvelte, setWasmUrl } from '@lottiefiles/dotlottie-svelte';
+import { onMount } from 'svelte';
+
+setWasmUrl('/vendor/dotlottie-player.wasm')
 
 interface Props {
   name: string
@@ -37,10 +39,11 @@ onMount(() => {
   {src}
   autoplay={autoplay && !isReducedMotion}
   loop={loop && !isReducedMotion}
-  {...otherProps}
   layout={{ fit: 'contain', align: [0.5, 0.5] }}
   renderConfig={{
     autoResize: true,
     devicePixelRatio: window.devicePixelRatio,
+    quality: 100
   }}
+  {...otherProps}
 />
