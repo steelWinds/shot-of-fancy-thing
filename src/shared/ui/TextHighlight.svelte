@@ -1,29 +1,31 @@
-<script lang="ts">
-import type { ComponentProps } from 'svelte';
-import Highligher from './Highligher.svelte';
+<script lang='ts'>
+  import type { ComponentProps } from 'svelte';
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  import Highligher from './Highligher.svelte';
 
-type HighlighterProps = ComponentProps<typeof Highligher>;
+  type HTMLSpanAttributes = SvelteHTMLElements['span'];
+  type HighlighterProps = ComponentProps<typeof Highligher>;
 
-interface TextPart {
-  text: string
-  highlighter?: Pick<HighlighterProps, 'action' | 'strokeWidth' | 'duration' | 'delay' | 'padding'>
-}
+  interface TextPart {
+    text: string
+    highlighter?: Pick<HighlighterProps, 'action' | 'strokeWidth' | 'duration' | 'delay' | 'padding'>
+  }
 
-interface Props {
-  items: TextPart[]
-  class?: string
-}
+  interface Props extends HTMLSpanAttributes {
+    items: TextPart[]
+    class?: string
+  }
 
-const { items, class: className }: Props = $props();
+  const { items, class: className, ...attrs }: Props = $props();
 </script>
 
-<span class={className}>
-  {#each items as item}
+<span class={className} {...attrs}>
+  {#each items as item, idx (idx)}
     {#if item.highlighter}
       <Highligher
         {...item.highlighter}
-        color="var(--color-accent-green)"
-        class="relative inline-block whitespace-nowrap"
+        color='var(--color-accent-green)'
+        class='relative inline-block whitespace-nowrap'
       >
         {item.text}
       </Highligher>

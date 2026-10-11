@@ -1,6 +1,5 @@
 import process from 'node:process';
-
-import sitemap from '@astrojs/sitemap';
+import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
@@ -15,17 +14,24 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
   session: false,
-  integrations: [sitemap({
-    i18n: {
-      defaultLocale: 'ru',
-      locales: {
-        en: 'en',
-        ru: 'ru',
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'ru',
+        locales: {
+          en: 'en-US',
+          ru: 'ru-RU',
+        },
       },
-    },
-  }), svelte({
-    extensions: ['.svelte'],
-  }), icon()],
+      xslURL: '/sitemap.xsl',
+      changefreq: ChangeFreqEnum.WEEKLY,
+      priority: 1,
+    }),
+    svelte({
+      extensions: ['.svelte'],
+    }),
+    icon(),
+  ],
   i18n: {
     defaultLocale: 'ru',
     locales: ['en', 'ru'],

@@ -6,6 +6,7 @@ export default antfu(
     type: 'app',
     astro: true,
     typescript: true,
+    svelte: true,
     gitignore: true,
     ignores: [
       'dist',
@@ -56,6 +57,7 @@ export default antfu(
       '**/*.mts',
       '**/*.cts',
       '**/*.astro',
+      '**/*.svelte',
     ],
 
     rules: {

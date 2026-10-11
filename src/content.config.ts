@@ -25,11 +25,13 @@ const home = defineCollection({
   loader: glob({ base: './content/home', pattern: '**/*.json' }),
   schema: z.object({
     hero: z.object({
+      titleFlat: z.string(),
       title: highlightedText,
       description: z.array(z.string()),
     }),
     projects: z.object({
       title: z.string(),
+      subtitleFlat: z.string(),
       subtitle: highlightedText,
       items: z.array(z.object({
         title: z.string(),
@@ -47,6 +49,7 @@ const home = defineCollection({
     }),
     contacts: z.object({
       title: z.string(),
+      subtitleFlat: z.string(),
       subtitle: highlightedText,
       items: z.array(z.object({
         title: z.string(),
