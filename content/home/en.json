@@ -1,5 +1,6 @@
 {
   "hero": {
+    "titleFlat": "I build things - and sometimes just for fun",
     "title": [
       {
         "text": "I build things "
@@ -38,6 +39,7 @@
   },
   "projects": {
     "title": "Things I've built",
+    "subtitleFlat": "Most of what I build starts as a curious idea. Every now and then, it turns into something genuinely useful",
     "subtitle": [
       {
         "text": "Most of what I build starts as a "
@@ -111,6 +113,7 @@
   },
   "contacts": {
     "title": "Let's talk",
+    "subtitleFlat": "Pick whichever platform works for you - I usually reply pretty quickly",
     "subtitle": [
       {
         "text": "Pick whichever platform "

@@ -14,5 +14,21 @@
       "dest": "/404.html",
       "status": 404
     }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/en/",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "header",
+          "key": "Accept-Language",
+          "value": {
+            "re": "^en(?:-|,|;|$)"
+          }
+        }
+      ]
+    }
   ]
 }

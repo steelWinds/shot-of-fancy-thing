@@ -1,12 +1,11 @@
 import process from 'node:process';
-
-import sitemap from '@astrojs/sitemap';
+import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
-import { defineConfig, envField, fontProviders } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -15,17 +14,24 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
   session: false,
-  integrations: [sitemap({
-    i18n: {
-      defaultLocale: 'ru',
-      locales: {
-        en: 'en',
-        ru: 'ru',
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'ru',
+        locales: {
+          en: 'en-US',
+          ru: 'ru-RU',
+        },
       },
-    },
-  }), svelte({
-    extensions: ['.svelte'],
-  }), icon()],
+      xslURL: '/sitemap.xsl',
+      changefreq: ChangeFreqEnum.WEEKLY,
+      priority: 1,
+    }),
+    svelte({
+      extensions: ['.svelte'],
+    }),
+    icon(),
+  ],
   i18n: {
     defaultLocale: 'ru',
     locales: ['en', 'ru'],
@@ -49,12 +55,6 @@ export default defineConfig({
       display: 'swap',
     },
   ],
-  env: {
-    schema: {
-      API_URL: envField.string({ context: 'server', access: 'secret', url: true, startsWith: 'https://' }),
-    },
-    validateSecrets: true,
-  },
   security: {
     allowedDomains: [
       {

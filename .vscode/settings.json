@@ -5,6 +5,7 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
+  "svelte.enable-ts-plugin": true,
 
   "eslint.useFlatConfig": true,
   "eslint.validate": [

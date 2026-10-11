@@ -9,26 +9,32 @@ type HighlightedText = ComponentProps<typeof TextHighlight>['items'];
 interface Props extends HTMLAttributes<'section'> {
   title: string
   subtitle?: HighlightedText
+  subtitleFlat?: string
 }
 
-const { title, subtitle, class: className, ...attrs } = Astro.props;
+const {
+  title,
+  subtitle,
+  subtitleFlat,
+  class: className,
+  ...attrs
+} = Astro.props;
 ---
 
-<section
-  class="container-xl mx-auto"
-  class:list={[className]}
-  {...attrs}
->
+<section class="container-xl mx-auto" class:list={[className]} {...attrs}>
   <div class="flex flex-row flex-wrap gap-5 lg:gap-10">
     <h2>
       <Badge class="text-m-h2 lg:text-h2">
-        { title }
+        {title}
       </Badge>
     </h2>
+
     {
-      subtitle && (
+      subtitle && subtitleFlat && (
         <p class="text-m-p lg:text-p max-w-140 text-start">
-          <TextHighlight items={subtitle} client:visible />
+          <span class="sr-only">{subtitleFlat}</span>
+
+          <TextHighlight items={subtitle} client:visible aria-hidden />
         </p>
       )
     }

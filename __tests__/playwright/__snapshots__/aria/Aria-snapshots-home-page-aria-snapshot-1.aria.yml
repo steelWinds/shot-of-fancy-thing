@@ -1,0 +1,68 @@
+- main:
+  - heading "Делаю штуки для веба - а иногда потому, что интересно" [level=1]
+  - paragraph: "Я fullstack-разработчик, в основном работаю с Vue, Nuxt, PHP и Laravel. Мне нравится собирать вещи целиком: от интерфейса и клиентской логики до backend-части и интеграций. Кроме самой разработки, много внимания уделяю дизайну, анимациям, производительности и тому, как продукт ощущается в использовании. Иногда экспериментирую с новыми технологиями, нейросетями и просто интересными идеями."
+  - heading "Мои проекты" [level=2]
+  - paragraph: Чаще всего всё начинается с любопытной идеи. А иногда из неё получается что-то действительно полезное
+  - list:
+    - listitem:
+      - link "Github":
+        - /url: https://github.com/steelWinds/masonry-blade
+        - heading "Masonry Blade" [level=3]
+        - paragraph: TS & Web Workers
+        - text: ""
+    - listitem:
+      - link "Github":
+        - /url: https://vue-masonry-blade.vercel.app/
+        - heading "Vue Masonry Blade" [level=3]
+        - paragraph: Vue.js & TS
+        - text: ""
+    - listitem:
+      - link "Github":
+        - /url: https://github.com/steelWinds/slog-analyze
+        - heading "Slog Analyze" [level=3]
+        - paragraph: Node.js & TS
+        - text: ""
+    - listitem:
+      - link "Github":
+        - /url: https://v-vibes.vercel.app
+        - heading "VVibes" [level=3]
+        - paragraph: Svelte & TS
+        - text: ""
+  - article:
+    - heading "Больше на GitHub" [level=3]
+    - paragraph: Там лежат остальные эксперименты, небольшие проекты и просто код, который мне хотелось написать.
+    - link "GitHub":
+      - /url: https://github.com/steelWinds
+      - text: ""
+      - img
+  - heading "Будем на связи" [level=2]
+  - paragraph: Выбирай удобную площадку - обычно я отвечаю довольно быстро
+  - list:
+    - listitem:
+      - link "Open profile":
+        - /url: https://t.me/plutograde
+        - heading "Telegram" [level=3]
+        - paragraph: "@plutograde"
+        - text: ""
+        - img
+    - listitem:
+      - link "Open profile":
+        - /url: https://discord.com/users/407856290107359243
+        - heading "Discord" [level=3]
+        - paragraph: steelwind_demon
+        - text: ""
+        - img
+    - listitem:
+      - link "Open profile":
+        - /url: https://www.facebook.com/profile.php?id=61593731563202
+        - heading "Facebook" [level=3]
+        - paragraph: Личный профиль
+        - text: ""
+        - img
+    - listitem:
+      - link "Open profile":
+        - /url: https://www.instagram.com/gleipnir_0/
+        - heading "Instagram" [level=3]
+        - paragraph: "@gleipnir_0"
+        - text: ""
+        - img
