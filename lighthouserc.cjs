@@ -1,26 +1,32 @@
 const process = require('node:process');
 
+const baseURL = process.env.BASE_URL || 'http://localhost/';
+const useBypass = !!(process.env.BASE_URL && process.env.VERCEL_AUTOMATION_BYPASS_SECRET);
+
 module.exports = {
   ci: {
     collect: {
-      staticDistDir: './.vercel/output/static',
+      staticDistDir: process.env.BASE_URL ? undefined : './.vercel/output/static',
       url: [
-        'http://localhost/',
-        'http://localhost/en/',
-        'http://localhost/404',
-        'http://localhost/en/404',
-      ],
+        '/',
+        '/en/',
+        '/404',
+        '/en/404',
+      ].map(path => new URL(path, baseURL).href),
       numberOfRuns: 3,
+      puppeteerScript: useBypass ? './.github/lighthouse-bypass.cjs' : undefined,
+      puppeteerLaunchOptions: {
+        args: process.env.CI ? ['--no-sandbox'] : [],
+      },
       settings: {
-        chromeFlags: process.env.CI ? '--no-sandbox' : undefined,
+        chromeFlags: process.env.CI && !useBypass ? '--no-sandbox' : undefined,
       },
     },
     assert: {
       preset: 'lighthouse:recommended',
     },
     upload: {
-      target: 'filesystem',
-      outputDir: './.lighthouseci/reports',
+      target: 'temporary-public-storage',
     },
   },
 };

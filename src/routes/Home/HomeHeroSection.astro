@@ -2,7 +2,6 @@
 import type { HTMLAttributes } from 'astro/types';
 import type { CollectionEntry } from 'astro:content';
 import LottieAnimation from '~/shared/ui/LottieAnimation.svelte';
-import PixelBlast from '~/shared/ui/PixelBlast.svelte';
 import TextHighlight from '~/shared/ui/TextHighlight.svelte';
 
 type HeroContent = CollectionEntry<'home'>['data']['hero'];
@@ -27,25 +26,9 @@ const {
   class:list={[className]}
   {...attrs}
 >
-  <div
-    class="absolute inset-0 w-full max-w-[1920px] mx-auto h-full z-0"
-    aria-hidden="true"
-  >
-    <PixelBlast
-      variant="diamond"
-      color="#b9ff66"
-      patternScale={8}
-      pixelSize={10}
-      edgeFade={0.25}
-      liquid={true}
-      liquidRadius={0.5}
-      client:media="(prefers-reduced-motion: no-preference)"
-    />
-  </div>
-
-  <div class="pointer-events-none relative z-10">
+  <div class="relative z-10">
     <h1
-      class="home-hero-section__title text-m-h1 lg:text-h1 text-black pointer-events-auto"
+      class="home-hero-section__title text-m-h1 lg:text-h1 text-black"
     >
       <span class="sr-only">
         {titleFlat}
@@ -59,7 +42,7 @@ const {
     </h1>
 
     <p
-      class="home-hero-section__description text-m-p-large lg:text-p-large mt-6 lg:mt-8 text-black grid gap-2.5 pointer-events-auto"
+      class="home-hero-section__description text-m-p-large lg:text-p-large mt-6 lg:mt-8 text-black grid gap-2.5"
     >
       {description?.map(desc => <span>{desc}</span>)}
     </p>

@@ -5,7 +5,7 @@ import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
-import { defineConfig, envField, fontProviders } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -55,12 +55,6 @@ export default defineConfig({
       display: 'swap',
     },
   ],
-  env: {
-    schema: {
-      API_URL: envField.string({ context: 'server', access: 'secret', url: true, startsWith: 'https://' }),
-    },
-    validateSecrets: true,
-  },
   security: {
     allowedDomains: [
       {

@@ -1,6 +1,9 @@
 import process from 'node:process';
 import { defineConfig, devices } from '@playwright/test';
 
+const baseURL = process.env.BASE_URL || 'http://localhost:4321';
+const bypassSecret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
+
 export default defineConfig({
   testDir: './__tests__/playwright',
   testMatch: [
@@ -29,26 +32,32 @@ export default defineConfig({
   },
   reporter: process.env.CI
     ? [
+      ['github'],
       ['list'],
       ['html', { open: 'never' }],
     ]
     : 'list',
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL,
+    extraHTTPHeaders: process.env.BASE_URL && bypassSecret
+      ? { 'x-vercel-protection-bypass': bypassSecret }
+      : undefined,
 
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
-  webServer: {
-    command: 'npm run build && npm run preview',
-    url: 'http://localhost:4321',
-    timeout: 120_000,
-    reuseExistingServer: !process.env.CI,
+  webServer: process.env.BASE_URL
+    ? undefined
+    : {
+      command: 'npm run build && npm run preview',
+      url: baseURL,
+      timeout: 120_000,
+      reuseExistingServer: !process.env.CI,
 
-    stdout: 'ignore',
-    stderr: 'pipe',
-  },
+      stdout: 'ignore',
+      stderr: 'pipe',
+    },
   projects: [
     {
       name: 'chromium-desktop',

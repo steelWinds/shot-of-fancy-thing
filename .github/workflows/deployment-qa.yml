@@ -1,0 +1,83 @@
+name: Deployment QA
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [vercel.deployment.ready]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.client_payload.git.ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Lint and Vitest
+    if: github.event_name != 'repository_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint:eslint-check
+      - run: npm run lint:stylelint
+      - run: npm run test:run
+
+  playwright:
+    name: Playwright Preview
+    if: github.event.client_payload.environment == 'preview'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.client_payload.git.sha }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run test:e2e
+        env:
+          BASE_URL: ${{ github.event.client_payload.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  lighthouse:
+    name: Lighthouse Preview
+    if: github.event.client_payload.environment == 'preview'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.client_payload.git.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run test:lighthouse
+        env:
+          BASE_URL: ${{ github.event.client_payload.url }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+          CHROME_PATH: /usr/bin/google-chrome
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.event.client_payload.git.sha }}
