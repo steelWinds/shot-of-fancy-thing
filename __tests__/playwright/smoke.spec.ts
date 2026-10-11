@@ -31,7 +31,7 @@ test.describe('Smoke tests', () => {
 test('404 page is load', async ({ page }) => {
   const response = await page.goto('/404');
 
-  expect(response?.ok()).toBe(true);
+  expect(response?.status()).toBe(404);
 
   const goHomelink = page.getByRole('link');
 
