@@ -1,45 +1,25 @@
 name: Deployment QA
 
-on:
-  pull_request:
-  push:
-    branches: [main]
-  repository_dispatch:
-    types: [vercel.deployment.ready]
+"on":
+  deployment_status:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.client_payload.git.ref || github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.deployment.id }}
   cancel-in-progress: true
 
 jobs:
-  checks:
-    name: Lint and Vitest
-    if: github.event_name != 'repository_dispatch'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npm run lint:eslint-check
-      - run: npm run lint:stylelint
-      - run: npm run test:run
-
   playwright:
-    name: Playwright Preview
-    if: github.event.client_payload.environment == 'preview'
+    name: Playwright E2E
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.client_payload.git.sha }}
+          ref: ${{ github.event.deployment.sha }}
       - uses: actions/setup-node@v7
         with:
           node-version: 24
@@ -48,7 +28,7 @@ jobs:
       - run: npx playwright install --with-deps
       - run: npm run test:e2e
         env:
-          BASE_URL: ${{ github.event.client_payload.url }}
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
       - uses: actions/upload-artifact@v7
         if: always()
@@ -60,14 +40,14 @@ jobs:
           retention-days: 14
 
   lighthouse:
-    name: Lighthouse Preview
-    if: github.event.client_payload.environment == 'preview'
+    name: Lighthouse CI
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.client_payload.git.sha }}
+          ref: ${{ github.event.deployment.sha }}
           persist-credentials: false
       - uses: actions/setup-node@v7
         with:
@@ -76,8 +56,8 @@ jobs:
       - run: npm ci
       - run: npm run test:lighthouse
         env:
-          BASE_URL: ${{ github.event.client_payload.url }}
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
           CHROME_PATH: /usr/bin/google-chrome
-          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.event.client_payload.git.sha }}
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.event.deployment.sha }}
