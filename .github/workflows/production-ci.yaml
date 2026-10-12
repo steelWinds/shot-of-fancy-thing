@@ -32,9 +32,10 @@ jobs:
       - name: Get Preview URL
         id: preview
         run: |
+          git_tree=$(git -c safe.directory="$GITHUB_WORKSPACE" rev-parse 'HEAD^{tree}')
           npm install --global vercel@63
           preview_url=$(vercel list --environment=preview --status=READY \
-            --meta "gitTree=$(git rev-parse 'HEAD^{tree}')" --token="$VERCEL_TOKEN" | head -n 1)
+            --meta "gitTree=$git_tree" --token="$VERCEL_TOKEN" | head -n 1)
           test -n "$preview_url"
           echo "url=$preview_url" >> "$GITHUB_OUTPUT"
         env:
