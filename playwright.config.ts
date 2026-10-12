@@ -24,13 +24,11 @@ export default defineConfig({
         '{testDir}/__snapshots__/aria/{arg}{ext}',
     },
   },
-  reporter: process.env.CI
-    ? [
-      ['github'],
-      ['list'],
-      ['html', { open: 'never' }],
-    ]
-    : 'list',
+  reporter: [
+    ['github'],
+    ['list'],
+    ['html', { open: 'never' }],
+  ],
   use: {
     baseURL,
     extraHTTPHeaders: {
@@ -41,6 +39,9 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    contextOptions: {
+      reducedMotion: 'reduce',
+    },
   },
   projects: [
     {
