@@ -27,18 +27,12 @@ const {
   {...attrs}
 >
   <div class='relative z-10'>
-    <h1
-      class='home-hero-section__title text-m-h1 lg:text-h1 text-black'
-    >
+    <h1 class='home-hero-section__title text-m-h1 lg:text-h1 text-black'>
       <span class='sr-only'>
         {titleFlat}
       </span>
 
-      <TextHighlight
-        items={title ?? []}
-        client:media='(prefers-reduced-motion: no-preference)'
-        aria-hidden='true'
-      />
+      <TextHighlight items={title ?? []} client:visible aria-hidden='true' />
     </h1>
 
     <p
@@ -64,11 +58,6 @@ const {
       home-hero-section__lottie'
     aria-hidden='true'
   >
-    <LottieAnimation
-      name='sft-hero-animation'
-      loop
-      autoplay
-      client:only='svelte'
-    />
+    <LottieAnimation name='sft-hero-animation' loop autoplay client:load />
   </div>
 </section>

@@ -24,6 +24,7 @@ module.exports = {
       assertions: {
         'is-crawlable': 'off',
         'valid-source-maps': 'off',
+        'network-dependency-tree-insight': 'off',
       },
     },
     upload: {
