@@ -1,0 +1,7 @@
+- main:
+  - article:
+    - paragraph: /\d+ error/
+    - heading "Looks like this page isn't here" [level=1]
+    - paragraph: The link may be outdated, or there might be a typo in the address. Let's head back home.
+    - link "Back to home":
+      - /url: /en/

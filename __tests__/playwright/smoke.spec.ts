@@ -1,12 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Smoke tests', () => {
-  test.use({
-    javaScriptEnabled: false,
-  });
-
   test.beforeEach(async ({ page }) => {
-    const response = await page.goto('/');
+    const response = await page.goto('./');
 
     expect(response?.ok()).toBe(true);
   });
@@ -29,7 +25,7 @@ test.describe('Smoke tests', () => {
 });
 
 test('404 page is load', async ({ page }) => {
-  await page.goto('/404');
+  await page.goto('./404');
 
   const goHomelink = page.getByRole('link');
 
@@ -38,5 +34,5 @@ test('404 page is load', async ({ page }) => {
 
   await goHomelink.click();
 
-  await expect(page).toHaveURL('/');
+  await expect(page).toHaveURL('./');
 });
