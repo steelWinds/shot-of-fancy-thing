@@ -9,14 +9,19 @@ type Props<T extends Tag> = Polymorphic<{
   color?: Color
 }>;
 
-const { color = 'dark', as: Element = 'button', class: className, ...props } = Astro.props;
+const {
+  color,
+  as: Element = 'button',
+  class: className,
+  ...props
+} = Astro.props;
 ---
 
 <Element
-  class="button"
+  class='button'
   class:list={[
     color && 'button--is-styled',
-    `button--color-${color}`,
+    color && `button--color-${color}`,
     className,
   ]}
   {...props}
@@ -25,45 +30,45 @@ const { color = 'dark', as: Element = 'button', class: className, ...props } = A
 </Element>
 
 <style scoped>
-.button {
-  --button-font-size: var(--text-m-p-large);
-  --button-line-heigth: var(--text-m-p-large--line-height);
-  --button-font-weight: 500;
-  --button-padding: 16px 28px;
+  .button {
+    --button-font-size: var(--text-m-p-large);
+    --button-line-heigth: var(--text-m-p-large--line-height);
+    --button-font-weight: 500;
+    --button-padding: 16px 28px;
 
-  @media (--breakpoint-lg) {
-    --button-padding: 20px 35px;
-    --button-font-size: var(--text-p-large);
-    --button-line-heigth: var(--text-p-large--line-height);
-    --button-font-weight: var(--text-p-large--font-weight);
+    @media (--breakpoint-lg) {
+      --button-padding: 20px 35px;
+      --button-font-size: var(--text-p-large);
+      --button-line-heigth: var(--text-p-large--line-height);
+      --button-font-weight: var(--text-p-large--font-weight);
+    }
   }
-}
 
-.button--is-styled {
-  display: inline-block;
-  padding: var(--button-padding);
-  border-radius: 14px;
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  line-height: var(--button-line-heigth);
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: 1px solid var(--button-border-color, transparent);
-}
+  .button--is-styled {
+    display: inline-block;
+    padding: var(--button-padding);
+    border-radius: 14px;
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    line-height: var(--button-line-heigth);
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--button-border-color, transparent);
+  }
 
-.button--color-dark {
-  --button-bg-color: var(--color-bg-strong);
-  --button-text-color: var(--color-white);
-}
+  .button--color-dark {
+    --button-bg-color: var(--color-bg-strong);
+    --button-text-color: var(--color-white);
+  }
 
-.button--color-glass {
-  --button-bg-color: transparent;
-  --button-text-color: var(--color-white);
-  --button-border-color: var(--color-bg-strong);
-}
+  .button--color-glass {
+    --button-bg-color: transparent;
+    --button-text-color: var(--color-white);
+    --button-border-color: var(--color-bg-strong);
+  }
 
-.button--color-green {
-  --button-bg-color: var(--color-accent-green);
-  --button-text-color: var(--color-bg-strong);
-}
+  .button--color-green {
+    --button-bg-color: var(--color-accent-green);
+    --button-text-color: var(--color-bg-strong);
+  }
 </style>

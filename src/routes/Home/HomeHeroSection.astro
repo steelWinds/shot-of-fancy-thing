@@ -22,34 +22,34 @@ const {
 ---
 
 <section
-  class="grid grid-cols-1 lg:grid-cols-2 container-xl mx-auto relative gap-2"
+  class='grid grid-cols-1 lg:grid-cols-2 container-xl mx-auto relative gap-2'
   class:list={[className]}
   {...attrs}
 >
-  <div class="relative z-10">
+  <div class='relative z-10'>
     <h1
-      class="home-hero-section__title text-m-h1 lg:text-h1 text-black"
+      class='home-hero-section__title text-m-h1 lg:text-h1 text-black'
     >
-      <span class="sr-only">
+      <span class='sr-only'>
         {titleFlat}
       </span>
 
       <TextHighlight
         items={title ?? []}
-        client:media="(prefers-reduced-motion: no-preference)"
-        aria-hidden="true"
+        client:media='(prefers-reduced-motion: no-preference)'
+        aria-hidden='true'
       />
     </h1>
 
     <p
-      class="home-hero-section__description text-m-p-large lg:text-p-large mt-6 lg:mt-8 text-black grid gap-2.5"
+      class='home-hero-section__description text-m-p-large lg:text-p-large mt-6 lg:mt-8 text-black grid gap-2.5'
     >
       {description?.map(desc => <span>{desc}</span>)}
     </p>
   </div>
 
   <div
-    class="aspect-square
+    class='aspect-square
       w-full
       max-w-105
       mx-auto
@@ -61,14 +61,14 @@ const {
       relative
       z-10
       pointer-events-none
-      home-hero-section__lottie"
-    aria-hidden="true"
+      home-hero-section__lottie'
+    aria-hidden='true'
   >
     <LottieAnimation
-      name="sft-hero-animation"
+      name='sft-hero-animation'
       loop
       autoplay
-      client:only="svelte"
+      client:only='svelte'
     />
   </div>
 </section>

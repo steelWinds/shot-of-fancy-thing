@@ -13,12 +13,12 @@ const { items = [], class: className, ...props } = Astro.props;
 ---
 
 <div
-  class="bg-bg-surface p-5 lg:py-15 max-lg:-mx-5 lg:px-25 lg:rounded-[45px]"
+  class='bg-bg-surface p-5 lg:py-15 max-lg:-mx-5 lg:px-25 lg:rounded-[45px]'
   class:list={[className]}
   {...props}
 >
   <ul
-    class="
+    class='
     flex
     flex-row
     flex-nowrap
@@ -36,18 +36,18 @@ const { items = [], class: className, ...props } = Astro.props;
     lg:gap-x-10
     lg:gap-y-7.5
     max-lg:pr-5
-  "
+  '
   >
     {
       items.map(contact => (
-        <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+        <li class='max-lg:min-w-75 snap-start max-lg:pl-5'>
           <ContactCard
             title={contact.title}
             subtitle={contact.subtitle}
             href={contact.link}
             color={contact.color}
-            target="_blank"
-            rel="noopener noreferrer"
+            target='_blank'
+            rel='noopener noreferrer'
           />
         </li>
       ))

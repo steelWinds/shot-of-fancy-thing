@@ -45,32 +45,31 @@ function getLinkColor(color: Color) {
 ---
 
 <a
-  class="github-project-card"
+  class='github-project-card'
   class:list={[`github-project-card__wrapper--color-${color}`, className]}
   {...props}
-  aria-label="Github"
 >
-  <div class="github-project-card__wrapper">
-    <div class="github-project-card__content">
-      <h3 class="github-project-card__title">
+  <div class='github-project-card__wrapper'>
+    <div class='github-project-card__content'>
+      <h3 class='github-project-card__title'>
         {
           titleByWords.map(word => (
-            <Badge class="github-project-card__badge" color={badgeColor}>
+            <Badge class='github-project-card__badge' color={badgeColor}>
               {word}
             </Badge>
           ))
         }
       </h3>
 
-      {subtitle && <p class="github-project-card__subtitle">{subtitle}</p>}
+      {subtitle && <p class='github-project-card__subtitle'>{subtitle}</p>}
 
-      <span class="github-project-card__link">
+      <span class='github-project-card__link'>
         <span>Github</span>
-        <IconArrow color={linkColor} class="text-[20px] lg:text-[40px]" />
+        <IconArrow color={linkColor} class='text-[20px] lg:text-[40px]' />
       </span>
     </div>
 
-    <slot name="after" />
+    <slot name='after' />
   </div>
 </a>
 

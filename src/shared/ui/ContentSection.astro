@@ -21,18 +21,18 @@ const {
 } = Astro.props;
 ---
 
-<section class="container-xl mx-auto" class:list={[className]} {...attrs}>
-  <div class="flex flex-row flex-wrap gap-5 lg:gap-10">
+<section class='container-xl mx-auto' class:list={[className]} {...attrs}>
+  <div class='flex flex-row flex-wrap gap-5 lg:gap-10'>
     <h2>
-      <Badge class="text-m-h2 lg:text-h2">
+      <Badge class='text-m-h2 lg:text-h2'>
         {title}
       </Badge>
     </h2>
 
     {
       subtitle && subtitleFlat && (
-        <p class="text-m-p lg:text-p max-w-140 text-start">
-          <span class="sr-only">{subtitleFlat}</span>
+        <p class='text-m-p lg:text-p max-w-140 text-start'>
+          <span class='sr-only'>{subtitleFlat}</span>
 
           <TextHighlight items={subtitle} client:visible aria-hidden />
         </p>

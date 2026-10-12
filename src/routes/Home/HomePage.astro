@@ -16,32 +16,32 @@ const pageData = data.data;
 ---
 
 <div>
-  <HomeHeroSection id="home-hero-section" class="mt-5" {...pageData.hero} />
+  <HomeHeroSection id='home-hero-section' class='mt-5' {...pageData.hero} />
 
   <ContentSection
-    id="home-projects-section"
+    id='home-projects-section'
     title={pageData.projects.title}
     subtitle={pageData.projects.subtitle}
     subtitleFlat={pageData.projects.subtitleFlat}
-    class="-mt-6 lg:mt-18"
+    class='-mt-6 lg:mt-18'
   >
     <HomeProjectsSection
       items={pageData.projects.items}
-      class="mt-10
+      class='mt-10
       max-lg:-mx-5
-      max-lg:py-2"
+      max-lg:py-2'
     />
 
-    <HomeMyGithubSection class="mt-10" {...pageData.githubCard} />
+    <HomeMyGithubSection class='mt-10' {...pageData.githubCard} />
   </ContentSection>
 
   <ContentSection
-    id="home-contacts-section"
+    id='home-contacts-section'
     title={pageData.contacts.title}
     subtitle={pageData.contacts.subtitle}
     subtitleFlat={pageData.contacts.subtitleFlat}
-    class="mt-18"
+    class='mt-18'
   >
-    <HomeContactsSection items={pageData.contacts.items} class="mt-10" />
+    <HomeContactsSection items={pageData.contacts.items} class='mt-10' />
   </ContentSection>
 </div>

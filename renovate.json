@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "security:minimumReleaseAgeNpm"
+  ],
+  "baseBranchPatterns": ["main"],
+  "dependencyDashboard": true,
+  "separateMajorMinor": true,
+  "timezone": "Europe/Moscow",
+  "schedule": ["* 12 * * 6"],
+  "updateNotScheduled": false,
+  "automerge": false
+}

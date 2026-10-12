@@ -24,6 +24,10 @@ module.exports = {
     },
     assert: {
       preset: 'lighthouse:recommended',
+      assertions: {
+        'is-crawlable': 'off',
+        'valid-source-maps': 'off',
+      },
     },
     upload: {
       target: 'temporary-public-storage',

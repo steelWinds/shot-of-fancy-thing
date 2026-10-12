@@ -1,0 +1,17 @@
+.git
+.agents
+.codex
+.aws
+node_modules
+.astro
+.vercel
+dist
+test-results
+playwright-report
+.lighthouseci
+coverage
+.env*
+*.log
+.DS_Store
+.idea
+.vscode
