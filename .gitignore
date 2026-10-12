@@ -31,3 +31,4 @@ pnpm-debug.log*
 # Lighthouse CI
 /.lighthouseci/
 coverage
+.env*

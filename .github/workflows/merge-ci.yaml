@@ -1,0 +1,54 @@
+name: Merge CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Lint and Vitest
+    runs-on: ubuntu-latest
+    container: node:24-bookworm
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          cache: npm
+      - run: npm ci
+      - run: npm run lint:eslint-check
+      - run: npm run lint:stylelint
+      - run: npm run test:run
+
+  preview:
+    name: Deploy Preview
+    needs: checks
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    container: node:24-bookworm
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          cache: npm
+      - run: npm ci
+      - name: Build and deploy Preview
+        run: |
+          npm install --global vercel@63
+          vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
+          vercel build --token="$VERCEL_TOKEN"
+          vercel deploy --prebuilt --target=preview --yes --token="$VERCEL_TOKEN" \
+            --meta "gitTree=$(git rev-parse 'HEAD^{tree}')"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

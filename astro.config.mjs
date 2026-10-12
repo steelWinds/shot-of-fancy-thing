@@ -4,7 +4,6 @@ import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
-
 import { defineConfig, fontProviders } from 'astro/config';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -90,7 +89,6 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
     ],
-
     build: {
       sourcemap: false,
       rolldownOptions: {
