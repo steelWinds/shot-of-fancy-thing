@@ -1,7 +1,6 @@
 <script lang='ts'>
   import type { Config } from '@lottiefiles/dotlottie-svelte';
   import { DotLottieSvelte, setWasmUrl } from '@lottiefiles/dotlottie-svelte';
-  import { onMount } from 'svelte';
 
   setWasmUrl('/vendor/dotlottie-player.wasm');
 
@@ -17,14 +16,14 @@
 
   let isReducedMotion = $state(false);
 
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const handleChange = (event: MediaQueryListEvent) => {
+    isReducedMotion = event.matches;
+  };
 
-  isReducedMotion = mediaQuery.matches;
+  $effect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  onMount(() => {
-    const handleChange = (event: MediaQueryListEvent) => {
-      isReducedMotion = event.matches;
-    };
+    isReducedMotion = mediaQuery.matches;
 
     mediaQuery.addEventListener('change', handleChange);
 
@@ -41,7 +40,7 @@
   layout={{ fit: 'contain', align: [0.5, 0.5] }}
   renderConfig={{
     autoResize: true,
-    devicePixelRatio: window.devicePixelRatio,
+    devicePixelRatio: globalThis?.devicePixelRatio ?? 1,
     quality: 100,
   }}
   {...otherProps}

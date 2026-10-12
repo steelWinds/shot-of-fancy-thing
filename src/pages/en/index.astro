@@ -1,5 +1,6 @@
 ---
 import HomePage from '~/routes/Home/HomePage.astro';
+import heroAnimationUrl from '~/shared/assets/lottie/sft-hero-animation.lottie?url';
 import Layout from '~/shared/layouts/Layout.astro';
 import { useTranslations } from '~/shared/lib';
 
@@ -11,5 +12,21 @@ const t = useTranslations('en');
   description={t('seo.index.description')}
   ogImage='/og/en/home.png'
 >
+  <Fragment slot='head'>
+    <link
+      rel='preload'
+      href='/vendor/dotlottie-player.wasm'
+      as='fetch'
+      type='application/wasm'
+      crossorigin='anonymous'
+    />
+    <link
+      rel='preload'
+      href={heroAnimationUrl}
+      as='fetch'
+      crossorigin='anonymous'
+    />
+  </Fragment>
+
   <HomePage />
 </Layout>
