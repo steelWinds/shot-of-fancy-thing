@@ -2,24 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "^/en(?:/.*)?$",
-      "dest": "/en/404/",
-      "status": 404
-    },
-    {
-      "src": "^/.*$",
-      "dest": "/404.html",
-      "status": 404
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/en/",
-      "statusCode": 301,
+      "src": "^/$",
       "has": [
         {
           "type": "header",
@@ -28,7 +11,24 @@
             "re": "^en(?:-|,|;|$)"
           }
         }
-      ]
+      ],
+      "headers": {
+        "Location": "/en"
+      },
+      "status": 307
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/en(?:/.*)?$",
+      "dest": "/en/404",
+      "status": 404
+    },
+    {
+      "src": "^/.*$",
+      "dest": "/404",
+      "status": 404
     }
   ]
 }
