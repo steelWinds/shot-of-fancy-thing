@@ -2,7 +2,8 @@
 
 ![GitHub License](https://img.shields.io/github/license/steelWinds/shot-of-fancy-thing)
 [![Module type: ESM](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
-[![Deployment QA](https://github.com/steelWinds/shot-of-fancy-thing/actions/workflows/deployment-qa.yml/badge.svg)](https://github.com/steelWinds/shot-of-fancy-thing/actions/workflows/deployment-qa.yml)
+[![Merge CI](https://github.com/steelWinds/shot-of-fancy-thing/actions/workflows/merge-ci.yaml/badge.svg)](https://github.com/steelWinds/shot-of-fancy-thing/actions/workflows/merge-ci.yaml)
+[![Production CI](https://github.com/steelWinds/shot-of-fancy-thing/actions/workflows/production-ci.yaml/badge.svg)](https://github.com/steelWinds/shot-of-fancy-thing/actions/workflows/production-ci.yaml)
 [![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=white)](https://astro.build)
 [![Svelte](https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -67,9 +68,6 @@ Requires Chrome and a production build:
 npm run build
 npm run test:lighthouse
 ```
-
-Set `BASE_URL` to test a preview. Protected previews require `VERCEL_AUTOMATION_BYPASS_SECRET`;
-local Lighthouse also needs `CHROME_PATH` when using the bypass.
 
 ## Contributing
 
