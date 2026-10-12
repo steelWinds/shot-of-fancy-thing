@@ -25,6 +25,8 @@ module.exports = {
         'is-crawlable': 'off',
         'valid-source-maps': 'off',
         'network-dependency-tree-insight': 'off',
+        'document-latency-insight': 'off',
+        'redirects': 'off',
       },
     },
     upload: {
