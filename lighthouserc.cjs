@@ -20,6 +20,9 @@ module.exports = {
       },
       settings: {
         chromeFlags: process.env.CI && !useBypass ? '--no-sandbox' : undefined,
+        extraHeaders: {
+          'x-vercel-skip-toolbar': '1',
+        },
       },
     },
     assert: {
