@@ -20,23 +20,22 @@ const {
 ---
 
 <a
-  class="contact-card"
+  class='contact-card'
   class:list={[`contact-card--color-${color}`, className]}
   {...props}
-  aria-label="Open profile"
 >
-  <h3 class="contact-card__title">
+  <h3 class='contact-card__title'>
     {title}
   </h3>
 
-  <p class="contact-card__subtitle">
+  <p class='contact-card__subtitle'>
     {subtitle}
   </p>
 
-  <span class="contact-card__link">
+  <span class='contact-card__link'>
     <span>Open profile</span>
 
-    <Icon class="contact-card__link-icon" name="lucide:arrow-up-right" />
+    <Icon class='contact-card__link-icon' name='lucide:arrow-up-right' />
   </span>
 </a>
 
@@ -55,7 +54,6 @@ const {
     --contact-card-gap: 10px;
     --contact-card-min-h: 115px;
     --contact-card-padding: 24px 28px;
-    --contact-card-link-animation-state: paused;
 
     display: flex;
     flex-direction: column;
@@ -112,7 +110,7 @@ const {
     @media (--breakpoint-lg) {
       --contact-card-title-font-size: var(--text-h3);
       --contact-card-title-line-height: var(--text-h3--line-height);
-      --contact-card-title-font-wegith: var(--text-h3--font-weight);
+      --contact-card-title-font-weight: var(--text-h3--font-weight);
     }
   }
 
@@ -129,7 +127,7 @@ const {
     @media (--breakpoint-lg) {
       --contact-card-subtitle-font-size: var(--text-p);
       --contact-card-subtitle-line-height: var(--text-p--line-height);
-      --contact-card-subtitle-font-wegith: var(--text-p--font-weight);
+      --contact-card-subtitle-font-weight: var(--text-p--font-weight);
     }
   }
 

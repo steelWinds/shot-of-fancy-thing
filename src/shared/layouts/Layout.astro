@@ -5,19 +5,12 @@ import { getAbsoluteLocaleUrl, pathHasLocale } from 'astro:i18n';
 import { withBase } from 'ufo';
 import '~/shared/assets/styles/preflight.css';
 import '~/shared/assets/styles/tailwind.css';
-import '~/shared/assets/styles/animations.css';
-
-interface LanguageAlternate {
-  href: string
-  hrefLang: string
-}
 
 export interface Props {
   title: string
   description: string
   ogImage: string
   type?: 'website' | 'article' | 'profile'
-  languageAlternates?: LanguageAlternate[]
   locale?: string
   noindex?: boolean
   nofollow?: boolean
@@ -60,18 +53,18 @@ const languageAlternates = [
 <!doctype html>
 <html lang={locale}>
   <head>
-    <meta charset="UTF-8" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset='UTF-8' />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
 
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="SFT" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel='icon' type='image/png' href='/favicon-96x96.png' sizes='96x96' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <meta name='apple-mobile-web-app-title' content='SFT' />
+    <link rel='manifest' href='/site.webmanifest' />
 
-    <Font cssVariable="--font-onest" preload />
+    <Font cssVariable='--font-onest' preload />
 
     <SEO
       title={title}
@@ -79,8 +72,8 @@ const languageAlternates = [
       canonical={Astro.url}
       noindex={noindex}
       nofollow={nofollow}
-      robotsExtras="max-image-preview:large"
-      languageAlternates={languageAlternates}
+      robotsExtras='max-image-preview:large'
+      {languageAlternates}
       openGraph={{
         basic: {
           title,
@@ -109,11 +102,11 @@ const languageAlternates = [
 
     {
       schema && (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        <script type='application/ld+json' set:html={JSON.stringify(schema)} />
       )
     }
 
-    <slot name="head" />
+    <slot name='head' />
   </head>
 
   <body>

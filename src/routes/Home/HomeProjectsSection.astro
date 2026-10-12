@@ -14,8 +14,7 @@ const { items = [], class: className, ...props } = Astro.props;
 ---
 
 <ul
-  class="
-    flex
+  class='flex
     flex-row
     flex-nowrap
     overflow-auto
@@ -30,25 +29,24 @@ const { items = [], class: className, ...props } = Astro.props;
     lg:grid-rows-2
     lg:gap-x-10
     lg:gap-y-11.25
-    max-lg:pr-5
-  "
+    max-lg:pr-5'
   class:list={[className]}
   {...props}
 >
   {
     items.map(project => (
-      <li class="max-lg:min-w-75 snap-start max-lg:pl-5">
+      <li class='max-lg:min-w-75 snap-start max-lg:pl-5'>
         <GithubProjectCard
-          class="h-full"
+          class='h-full'
           title={project.title}
           subtitle={project.subtitle}
           href={project.link}
           color={project.color}
-          target="_blank"
-          rel="noopener noreferrer"
+          target='_blank'
+          rel='noopener noreferrer'
         >
           <div
-            class="
+            class='
               absolute
               right-6
               bottom-6
@@ -56,18 +54,17 @@ const { items = [], class: className, ...props } = Astro.props;
               h-16
               lg:h-28
               max-w-56
-            "
+            '
             class:list={[project.lottieClass]}
-            slot="after"
-            aria-hidden="true"
+            slot='after'
+            aria-hidden='true'
           >
-            <div class="ml-auto w-full h-full">
+            <div class='ml-auto w-full h-full'>
               <LottieAnimation
                 name={project.lottie}
-                duration={1}
                 loop
                 autoplay
-                client:only="svelte"
+                client:only='svelte'
               />
             </div>
           </div>

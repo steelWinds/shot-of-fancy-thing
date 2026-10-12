@@ -15,20 +15,20 @@ const homeUrl = getRelativeLocaleUrl('en', '/');
   title={t('seo.404.title')}
   description={t('seo.404.description')}
   noindex
-  ogImage="/og/en/404.png"
+  ogImage='/og/en/404.png'
 >
   <section
-    class="
+    class='
       container-xl
       min-h-svh
       grid
       place-items-center
       py-5
       lg:py-10
-    "
+    '
   >
     <article
-      class="
+      class='
         w-full
         overflow-hidden
         rounded-4xl
@@ -38,10 +38,10 @@ const homeUrl = getRelativeLocaleUrl('en', '/');
         bg-bg-surface
         grid
         lg:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]
-      "
+      '
     >
       <div
-        class="
+        class='
           p-7
           sm:p-10
           lg:p-15
@@ -49,41 +49,41 @@ const homeUrl = getRelativeLocaleUrl('en', '/');
           flex-col
           items-start
           justify-center
-        "
+        '
       >
         <p
-          class="
+          class='
             text-m-h4
             lg:text-h4
             bg-accent-green
             rounded-[7px]
             px-2
-          "
+          '
         >
           {t('page.404.label')}
         </p>
 
-        <h1 class="text-m-h1 lg:text-h1 mt-5 max-w-160">
+        <h1 class='text-m-h1 lg:text-h1 mt-5 max-w-160'>
           {t('page.404.title')}
         </h1>
 
-        <p class="text-m-p-large lg:text-p-large mt-5 max-w-145">
+        <p class='text-m-p-large lg:text-p-large mt-5 max-w-145'>
           {t('page.404.description')}
         </p>
 
         <Button
-          as="a"
-          color="dark"
+          as='a'
+          color='dark'
           href={homeUrl}
-          class="inline-flex items-center gap-4 mt-8 lg:mt-10"
+          class='inline-flex items-center gap-4 mt-8 lg:mt-10'
         >
-          <IconArrow color="light" class="w-8 h-8" aria-hidden="true" />
+          <IconArrow color='light' class='w-8 h-8' aria-hidden='true' />
           {t('page.404.backHome')}
         </Button>
       </div>
 
       <div
-        class="
+        class='
           relative
           overflow-hidden
           bg-accent-green
@@ -94,11 +94,11 @@ const homeUrl = getRelativeLocaleUrl('en', '/');
           lg:border-t-0
           lg:border-l
           border-bg-strong
-        "
-        aria-hidden="true"
+        '
+        aria-hidden='true'
       >
         <span
-          class="
+          class='
             absolute
             top-1/2
             left-1/2
@@ -108,13 +108,13 @@ const homeUrl = getRelativeLocaleUrl('en', '/');
             leading-none
             font-medium
             text-bg-strong
-          "
+          '
         >
           404
         </span>
 
         <div
-          class="
+          class='
             absolute
             right-4
             bottom-4
@@ -126,13 +126,13 @@ const homeUrl = getRelativeLocaleUrl('en', '/');
             sm:h-36
             lg:w-44
             lg:h-44
-          "
+          '
         >
           <LottieAnimation
-            name="black-smile-animation"
+            name='black-smile-animation'
             loop
             autoplay
-            client:only="svelte"
+            client:only='svelte'
           />
         </div>
       </div>

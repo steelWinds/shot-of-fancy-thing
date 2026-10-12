@@ -27,6 +27,7 @@ export default antfu(
     rules: {
       'style/indent': ['error', 2],
       'style/quotes': ['error', 'single', { avoidEscape: true }],
+      'style/jsx-quotes': ['error', 'prefer-single'],
       'style/semi': ['error', 'always'],
       'style/comma-dangle': ['error', 'always-multiline'],
       'style/object-curly-spacing': ['error', 'always'],

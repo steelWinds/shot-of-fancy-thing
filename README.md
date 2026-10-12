@@ -16,6 +16,9 @@
 
 **ShotOfFancyThing** is my personal website — projects, experiments, and things I build. ✨
 
+<br>
+<br>
+
 ## Getting Started
 
 Requires Node.js 22.12+ and npm.
@@ -55,10 +58,17 @@ npm run test:run
 
 ### E2E tests
 
+Requires Docker and Make. Tests run in the same Playwright image as CI:
+
 ```bash
-npx playwright install --with-deps
-npm run test:e2e
+make test
+make test-update-snapshots
+make test-ui
 ```
+
+UI mode opens at [localhost:8080](http://localhost:8080). Snapshots and test results are saved in the repository; dependencies and build caches stay inside Docker.
+
+The container runs as root; new files saved to the repository may be owned by root on Linux.
 
 ### Lighthouse CI
 

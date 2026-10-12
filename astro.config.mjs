@@ -65,19 +65,33 @@ export default defineConfig({
       ? {
         directives: [
           "default-src 'self'",
-          "connect-src 'self' data:",
-          "img-src 'self' data: blob:",
-          "font-src 'self'",
+          "connect-src 'self' data: https://vercel.live https://vercel.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com",
+          "img-src 'self' data: blob: https://vercel.live https://vercel.com",
+          "font-src 'self' https://vercel.live https://assets.vercel.com",
           "media-src 'self'",
+          "frame-src 'self' https://vercel.live https://vercel.com",
+          "manifest-src 'self' https://vercel.com",
           "object-src 'none'",
           "base-uri 'self'",
         ],
         scriptDirective: {
-          resources: ["'self'", "'wasm-unsafe-eval'"],
+          resources: [
+            "'self'",
+            "'wasm-unsafe-eval'",
+            {
+              resource: 'https://vercel.live',
+              kind: 'element',
+            },
+            {
+              resource: 'https://va.vercel-scripts.com',
+              kind: 'element',
+            },
+          ],
         },
         styleDirective: {
           resources: [
             { resource: "'self'", kind: 'element' },
+            { resource: 'https://vercel.live', kind: 'element' },
             { resource: "'unsafe-inline'", kind: 'element' },
             { resource: "'unsafe-inline'", kind: 'attribute' },
           ],

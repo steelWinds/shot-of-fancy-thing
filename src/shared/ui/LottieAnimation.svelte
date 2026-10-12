@@ -9,7 +9,6 @@
     name: string
     loop?: Config['loop']
     autoplay?: Config['autoplay']
-    duration?: number
   }
 
   const { name, autoplay, loop, ...otherProps }: Props = $props();
