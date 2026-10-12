@@ -15,7 +15,7 @@ test.describe('validate HTML and a11y', () => {
     await expect(page).toMatchAriaSnapshot();
   });
 
-  test('Validate 404 page screenshot', async ({ page }) => {
+  test('Validate 404 page snapshot', async ({ page }) => {
     await page.goto('/404');
 
     await expect(page).toMatchAriaSnapshot();

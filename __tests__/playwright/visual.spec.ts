@@ -24,7 +24,7 @@ test.describe('Visual screenshots', () => {
   });
 
   test('404 page screenshot', async ({ page }) => {
-    await page.goto('/404');
+    await page.goto('/404', { waitUntil: 'load' });
 
     await expect(page).toHaveScreenshot('404.webp', { fullPage: true });
   });
