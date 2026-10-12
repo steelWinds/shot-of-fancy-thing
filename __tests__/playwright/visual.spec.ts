@@ -1,18 +1,14 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Visual screenshots', () => {
-  test.use({
-    reducedMotion: 'reduce',
-  });
-
   test('Home page screenshot', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('./');
 
     await expect(page).toHaveScreenshot('home.webp', { fullPage: true });
   });
 
   test('home page sections screenshot', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('./');
 
     const sections = await page.locator('main section[id]').all();
 
@@ -24,7 +20,7 @@ test.describe('Visual screenshots', () => {
   });
 
   test('404 page screenshot', async ({ page }) => {
-    await page.goto('/404', { waitUntil: 'load' });
+    await page.goto('./404', { waitUntil: 'load' });
 
     await expect(
       page.locator('astro-island[client="idle"][ssr]'),

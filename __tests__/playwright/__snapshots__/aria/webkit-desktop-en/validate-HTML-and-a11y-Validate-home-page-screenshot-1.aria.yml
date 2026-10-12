@@ -1,0 +1,68 @@
+- main:
+  - heading "I build things - and sometimes just for fun" [level=1]
+  - paragraph: I'm a fullstack developer, mostly working with Vue, Nuxt, PHP, and Laravel. I like building things end to end - from interfaces and client-side logic to backend functionality and integrations. Beyond development itself, I care a lot about design, animations, performance, and how a product feels to use. I also like experimenting with new technologies, AI, and whatever ideas happen to catch my interest.
+  - heading "Things I've built" [level=2]
+  - paragraph: Most of what I build starts as a curious idea. Every now and then, it turns into something genuinely useful
+  - list:
+    - listitem:
+      - link "Masonry Blade TS & Web Workers Github":
+        - /url: https://github.com/steelWinds/masonry-blade
+        - heading "Masonry Blade" [level=3]
+        - paragraph: TS & Web Workers
+        - text: ""
+    - listitem:
+      - link "Vue Masonry Blade Vue.js & TS Github":
+        - /url: https://vue-masonry-blade.vercel.app/
+        - heading "Vue Masonry Blade" [level=3]
+        - paragraph: Vue.js & TS
+        - text: ""
+    - listitem:
+      - link "Slog Analyze Node.js & TS Github":
+        - /url: https://github.com/steelWinds/slog-analyze
+        - heading "Slog Analyze" [level=3]
+        - paragraph: Node.js & TS
+        - text: ""
+    - listitem:
+      - link "VVibes Svelte & TS Github":
+        - /url: https://v-vibes.vercel.app
+        - heading "VVibes" [level=3]
+        - paragraph: Svelte & TS
+        - text: ""
+  - article:
+    - heading "More on GitHub" [level=3]
+    - paragraph: More experiments, side projects, and code live over on my GitHub.
+    - link "GitHub":
+      - /url: https://github.com/steelWinds
+      - text: ""
+      - img
+  - heading "Let's talk" [level=2]
+  - paragraph: Pick whichever platform works for you - I usually reply pretty quickly
+  - list:
+    - listitem:
+      - link "Telegram @plutograde Open profile":
+        - /url: https://t.me/plutograde
+        - heading "Telegram" [level=3]
+        - paragraph: "@plutograde"
+        - text: ""
+        - img
+    - listitem:
+      - link "Discord steelwind_demon Open profile":
+        - /url: https://discord.com/users/407856290107359243
+        - heading "Discord" [level=3]
+        - paragraph: steelwind_demon
+        - text: ""
+        - img
+    - listitem:
+      - link "Facebook Personal profile Open profile":
+        - /url: https://www.facebook.com/profile.php?id=61593731563202
+        - heading "Facebook" [level=3]
+        - paragraph: Personal profile
+        - text: ""
+        - img
+    - listitem:
+      - link "Instagram @gleipnir_0 Open profile":
+        - /url: https://www.instagram.com/gleipnir_0/
+        - heading "Instagram" [level=3]
+        - paragraph: "@gleipnir_0"
+        - text: ""
+        - img

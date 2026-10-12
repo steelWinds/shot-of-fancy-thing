@@ -14,14 +14,14 @@ export default defineConfig({
     timeout: 15_000,
     toHaveScreenshot: {
       pathTemplate:
-        '{testDir}/__snapshots__/visual/{arg}-{projectName}{ext}',
+        '{testDir}/__snapshots__/visual/{projectName}/{arg}{ext}',
       animations: 'disabled',
       threshold: 0.1,
       maxDiffPixelRatio: 0.001,
     },
     toMatchAriaSnapshot: {
       pathTemplate:
-        '{testDir}/__snapshots__/aria/{arg}{ext}',
+        '{testDir}/__snapshots__/aria/{projectName}/{arg}{ext}',
     },
   },
   reporter: [
@@ -64,5 +64,22 @@ export default defineConfig({
       name: 'mobile-safari',
       use: { ...devices['iPhone 14'] },
     },
-  ],
+  ].flatMap(project => [
+    {
+      name: `${project.name}-ru`,
+      use: {
+        ...project.use,
+        locale: 'ru-RU',
+        baseURL: new URL('/', baseURL).href,
+      },
+    },
+    {
+      name: `${project.name}-en`,
+      use: {
+        ...project.use,
+        locale: 'en-US',
+        baseURL: new URL('/en/', baseURL).href,
+      },
+    },
+  ]),
 });
