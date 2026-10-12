@@ -69,19 +69,6 @@ npm run build
 npm run test:lighthouse
 ```
 
-Set `BASE_URL` to test a preview. Protected previews require `VERCEL_AUTOMATION_BYPASS_SECRET`;
-local Lighthouse also needs `CHROME_PATH` when using the bypass.
-
-## Deployment
-
-PRs to `main`: lint/Vitest → Preview. Pushes to `main`: Playwright → Lighthouse → production.
-Production CI reuses the Preview with matching Git contents; missing or outdated previews block deployment.
-Require **Lint and Vitest** and **Deploy Preview** before merging; keep PRs up to date with `main`.
-Fork PRs run lint/Vitest only. Keep automatic Vercel Git deployments disabled.
-
-Repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`,
-`VERCEL_AUTOMATION_BYPASS_SECRET`, `LHCI_GITHUB_APP_TOKEN`.
-
 ## Contributing
 
 Open an [issue](https://github.com/steelWinds/shot-of-fancy-thing/issues) or submit a pull request.
