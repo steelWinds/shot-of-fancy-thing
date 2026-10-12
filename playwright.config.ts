@@ -43,6 +43,7 @@ export default defineConfig({
       ? {
         'x-vercel-protection-bypass': bypassSecret,
         'x-vercel-set-bypass-cookie': 'true',
+        'x-vercel-skip-toolbar': '1',
       }
       : undefined,
 
