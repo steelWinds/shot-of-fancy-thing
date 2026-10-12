@@ -86,6 +86,10 @@ export default defineConfig({
               resource: 'https://va.vercel-scripts.com',
               kind: 'element',
             },
+            {
+              resource: "'self'",
+              kind: 'element',
+            },
           ],
         },
         styleDirective: {
