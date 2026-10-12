@@ -5,7 +5,7 @@ module.exports = async (browser, { url }) => {
 
   try {
     await page.setExtraHTTPHeaders({
-      'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+      'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? '',
       'x-vercel-set-bypass-cookie': 'true',
     });
     await page.goto(url, { waitUntil: 'domcontentloaded' });

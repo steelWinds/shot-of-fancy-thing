@@ -34,10 +34,9 @@ npm ci
 ### Development
 
 ```bash
-npm run dev -- --background
+cp env.example .env
+npm run dev
 ```
-
-Open [localhost:4321](http://localhost:4321).
 
 ## Usage
 
@@ -58,7 +57,7 @@ npm run test:run
 
 ### E2E tests
 
-Requires Docker and Make. Tests run in the same Playwright image as CI:
+Requires Docker and Make. Copy `env.example` to `.env` before the first run.
 
 ```bash
 make test
@@ -66,16 +65,21 @@ make test-update-snapshots
 make test-ui
 ```
 
-UI mode opens at [localhost:8080](http://localhost:8080). Snapshots and test results are saved in the repository; dependencies and build caches stay inside Docker.
-
-The container runs as root; new files saved to the repository may be owned by root on Linux.
+UI mode opens at [localhost:8080](http://localhost:8080).
 
 ### Lighthouse CI
 
-Requires Chrome and a production build:
+For a local audit, first build and start the production preview in the background:
 
 ```bash
 npm run build
+npm run preview -- --background
+```
+
+```bash
+set -a
+source .env
+set +a
 npm run test:lighthouse
 ```
 

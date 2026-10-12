@@ -61,47 +61,45 @@ export default defineConfig({
         protocol: 'https',
       },
     ],
-    csp: isProd
-      ? {
-        directives: [
-          "default-src 'self'",
-          "connect-src 'self' data: https://vercel.live https://vercel.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com",
-          "img-src 'self' data: blob: https://vercel.live https://vercel.com",
-          "font-src 'self' https://vercel.live https://assets.vercel.com",
-          "media-src 'self'",
-          "frame-src 'self' https://vercel.live https://vercel.com",
-          "manifest-src 'self' https://vercel.com",
-          "object-src 'none'",
-          "base-uri 'self'",
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "connect-src 'self' data: https://vercel.live https://vercel.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com",
+        "img-src 'self' data: blob: https://vercel.live https://vercel.com",
+        "font-src 'self' https://vercel.live https://assets.vercel.com",
+        "media-src 'self'",
+        "frame-src 'self' https://vercel.live https://vercel.com",
+        "manifest-src 'self' https://vercel.com",
+        "object-src 'none'",
+        "base-uri 'self'",
+      ],
+      scriptDirective: {
+        resources: [
+          "'self'",
+          "'wasm-unsafe-eval'",
+          {
+            resource: 'https://vercel.live',
+            kind: 'element',
+          },
+          {
+            resource: 'https://va.vercel-scripts.com',
+            kind: 'element',
+          },
+          {
+            resource: "'self'",
+            kind: 'element',
+          },
         ],
-        scriptDirective: {
-          resources: [
-            "'self'",
-            "'wasm-unsafe-eval'",
-            {
-              resource: 'https://vercel.live',
-              kind: 'element',
-            },
-            {
-              resource: 'https://va.vercel-scripts.com',
-              kind: 'element',
-            },
-            {
-              resource: "'self'",
-              kind: 'element',
-            },
-          ],
-        },
-        styleDirective: {
-          resources: [
-            { resource: "'self'", kind: 'element' },
-            { resource: 'https://vercel.live', kind: 'element' },
-            { resource: "'unsafe-inline'", kind: 'element' },
-            { resource: "'unsafe-inline'", kind: 'attribute' },
-          ],
-        },
-      }
-      : undefined,
+      },
+      styleDirective: {
+        resources: [
+          { resource: "'self'", kind: 'element' },
+          { resource: 'https://vercel.live', kind: 'element' },
+          { resource: "'unsafe-inline'", kind: 'element' },
+          { resource: "'unsafe-inline'", kind: 'attribute' },
+        ],
+      },
+    },
   },
   vite: {
     plugins: [
@@ -120,5 +118,5 @@ export default defineConfig({
       },
     },
   },
-  adapter: vercel({ staticHeaders: true }),
+  adapter: vercel({ staticHeaders: isProd }),
 });
